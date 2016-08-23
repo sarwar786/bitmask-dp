@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<!-- saved from url=(0114)https://www.topcoder.com/community/data-science/data-science-tutorials/assignment-problem-and-hungarian-algorithm/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}</style>
+  
+  <meta name="fragment" content="!">
+  <title>Assignment Problem and Hungarian Algorithm  –  topcoder</title>
+  <meta name="description" content="">
+  <meta name="author" content="@topcoder">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"><script async="" src="./biset+dp 1– topcoder_files/fbevents.js"></script><script type="text/javascript" src="./biset+dp 1– topcoder_files/496af5ee90"></script><script src="./biset+dp 1– topcoder_files/nr-963.min.js"></script><script type="text/javascript" async="" src="./biset+dp 1– topcoder_files/aa23cd43c455ef33b6a0df3de81a79af9ea30f75.1.js"></script><script type="text/javascript" async="" src="./biset+dp 1– topcoder_files/i.js"></script><script type="text/javascript" async="" src="./biset+dp 1– topcoder_files/munchkin.js"></script><script async="" src="./biset+dp 1– topcoder_files/analytics.js"></script><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UgEGVFNbGwYGXVZaBgQ="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState";t("loader").features.stn=!0,t(6);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=Date.now())}),o.on(w,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on(m,function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),this.bstType])}),s.on(m,function(){this.bstStart=Date.now()}),s.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,!1),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(17)(a),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(17)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(17)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(17)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(17)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],16:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],17:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;c<s;c++)a[c].apply(i,r);var u=f[w[n]];return u&&u.push([v,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",w[n]=e,e in f||(f[e]=[])})}var m={},w={},v={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return v}function i(){return new r}var a="nr@context",s=t("gos"),c=t(15),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!g++){var t=y.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(w,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(15),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var m=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-963.min.js"},v=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:m,features:{},xhrWrappable:v};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),s("mark",["firstbyte",a()],null,"api");var g=0},{}]},{},["loader",2,10,4,3]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="https://www.topcoder.com/wp-content/themes/tcs-responsive/favicon.ico">
+
+    <!-- External JS -->
+  <!--[if lt IE 9]>
+  <script src="/js/html5shiv.js" type="text/javascript"></script>
+  <script src="/js/respond.min.js" type="text/javascript"></script>
+  <script src="/js/modernizr.js" type="text/javascript"></script>
+  <link rel = "stylesheet" href = "/css/ie.css ? v = 201407282" / >
+  <![endif]-->
+  <script type="text/javascript">
+    var wpUrl = "https://www.topcoder.com";
+    var tcApiRUL = 'https://api.topcoder.com/v2';
+    var myFiltersURL = '//lc1-user-settings-service.herokuapp.com';
+    var siteURL = 'https://www.topcoder.com';
+    var communityURL = '//community.topcoder.com';
+    var base_url = 'https://www.topcoder.com/wp-content/themes/tcs-responsive';
+    var stylesheet_dir = 'https://www.topcoder.com/wp-content/themes/tcs-responsive/css';
+    var autoRegister = '';
+    var timezone_string = "America/New_York";
+    var challengeType;
+    var cbApiURL = 'https://coderbits.com';
+  </script>
+
+<link rel="stylesheet" id="layerslider-css" href="./biset+dp 1– topcoder_files/layerslider.css" type="text/css" media="all">
+<link rel="stylesheet" id="ls-google-fonts-css" href="./biset+dp 1– topcoder_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="tchook-style-css" href="./biset+dp 1– topcoder_files/tcapi.css" type="text/css" media="all">
+<link rel="stylesheet" id="tchook-selectyze-style-css" href="./biset+dp 1– topcoder_files/Selectyze.jquery.css" type="text/css" media="all">
+<link rel="stylesheet" id="advanced-responsive-video-embedder-css" href="./biset+dp 1– topcoder_files/advanced-responsive-video-embedder-public.css" type="text/css" media="all">
+<link rel="stylesheet" id="responsive-lightbox-fancybox-css" href="./biset+dp 1– topcoder_files/jquery.fancybox-1.3.4.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-syntax-css-css" href="./biset+dp 1– topcoder_files/wp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="default-css" href="./biset+dp 1– topcoder_files/default.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="page-list-style-css" href="./biset+dp 1– topcoder_files/page-list.css" type="text/css" media="all">
+<!-- This site uses the Yoast Google Analytics plugin v5.2.7 - Universal enabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-6340959-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('require', 'displayfeatures');
+	__gaTracker('send','pageview');
+
+</script>
+<!-- / Yoast Google Analytics --><script type="text/javascript" src="./biset+dp 1– topcoder_files/greensock.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://www.topcoder.com/wp-content/themes/tcs-responsive/js/vendor/jquery/jquery.js"><\/script>')</script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/layerslider.kreaturamedia.jquery.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/layerslider.transitions.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/jquery.fancybox-1.3.4.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var rlArgs = {"script":"fancybox","selector":"lightbox","customEvents":"","activeGalleries":"0","modal":"0","showOverlay":"1","showCloseButton":"1","enableEscapeButton":"1","hideOnOverlayClick":"1","hideOnContentClick":"0","cyclic":"0","showNavArrows":"1","autoScale":"1","scrolling":"yes","centerOnScroll":"1","opacity":"1","overlayOpacity":"70","overlayColor":"#666","titleShow":"1","titlePosition":"outside","transitions":"fade","easings":"swing","speeds":"300","changeSpeed":"300","changeFade":"100","padding":"5","margin":"5","videoWidth":"1080","videoHeight":"720"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/front.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.topcoder.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.topcoder.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Primality Testing : Non-deterministic Algorithms" href="https://www.topcoder.com/community/data-science/data-science-tutorials/primality-testing-non-deterministic-algorithms/">
+<link rel="next" title="Community with accordion" href="https://www.topcoder.com/community/community-with-accordion/">
+<meta name="generator" content="WordPress 3.9.1">
+<link rel="shortlink" href="https://www.topcoder.com/?p=15667">
+<meta name="google-site-verification" content="UA-6340959-1">
+<meta name="google-publisher-plugin-pagetype" content="page"><meta name="google-site-verification" content="13nbPcn6VRWD2zdq-CEG0LbT00aOwSyhofA3OAEmbEI"><meta name="google-site-verification" content="13nbPcn6VRWD2zdq-CEG0LbT00aOwSyhofA3OAEmbEI"><meta name="google-site-verification" content="13nbPcn6VRWD2zdq-CEG0LbT00aOwSyhofA3OAEmbEI"><meta name="google-site-verification" content="p0OVxcrMQ2HYDsGgaRLRS9bsXuXmjKVcTGZnXNphIUI">	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+  <style>
+    .btn, a.btn, .blogCategoryMenu a, .searchBox input, .subscribeBox input {
+      behavior: url("https://www.topcoder.com/wp-content/themes/tcs-responsive/css/PIE.htc");
+    }
+  </style>
+
+<script async="true" type="text/javascript" src="./biset+dp 1– topcoder_files/roundtrip.js"></script><script async="true" type="text/javascript" src="https://d.adroll.com/pixel/LOUA2FVRTJDYZC2BMX72Z7/4XU6H3BYL5EQBFHZM4DIUU?pv=28914389873.23847&amp;cookie=LOUA2FVRTJDYZC2BMX72Z7%3A1%7C4XU6H3BYL5EQBFHZM4DIUU%3A1%7CWTCVDAU6FBB7DOI6RZ46FL%3A1&amp;adroll_s_ref=http%3A//codeforces.com/blog/entry/7351&amp;keyw="></script><div style="width: 1px; height: 1px; display: inline; position: absolute;"><img height="1" width="1" style="border-style:none;" alt="" src="https://d.adroll.com/cm/r/out">
+<img height="1" width="1" style="border-style:none;" alt="" src="https://d.adroll.com/cm/f/out">
+<img height="1" width="1" style="border-style:none;" alt="" src="https://d.adroll.com/cm/b/out">
+<img height="1" width="1" style="border-style:none;" alt="" src="https://d.adroll.com/cm/w/out">
+<img height="1" width="1" style="border-style:none;" alt="" src="https://d.adroll.com/cm/x/out">
+<img height="1" width="1" style="border-style:none;" alt="" src="https://d.adroll.com/cm/l/out">
+<img height="1" width="1" style="border-style:none;" alt="" src="https://d.adroll.com/cm/o/out">
+<img height="1" width="1" style="border-style:none;" alt="" src="https://d.adroll.com/cm/g/out?google_nid=adroll5">
+</div></head>
+
+<body style="">
+
+
+<div id="wrapper" class="tcssoUsingJS">
+<div class="ng-header-bootstrap ng-scope"><div class="header-wrapper" ng-class="{&#39;menu-visible&#39;: main.menuVisible}">
+  <header class="top-header">
+    <a href="https://www.topcoder.com/" class="logo-link"></a>
+    <div class="show-small mobile-heading"><!-- ngIf: main.menuVisible -->
+      <!-- ngIf: !main.menuVisible --><button type="button" ng-if="!main.menuVisible" ng-click="main.menuVisible = true" class="btn-open-menu ng-scope">Menu</button><!-- end ngIf: !main.menuVisible -->
+      <!-- ngIf: main.menuVisible -->
+      <!-- ngIf: !main.menuVisible --><a ng-href="" ng-switch="vm.isAuth" data-ng-if="!main.menuVisible" class="user-link ng-scope"><!-- ngSwitchWhen: true --><!-- ngSwitchWhen: false --><span ng-switch-when="false" class="btn-link ng-scope">JOIN</span></a><!-- end ngIf: !main.menuVisible -->
+    </div>
+   <ul class="main-menu">
+      <li class="menu-item search-wrapper">
+        <div class="menu-item-header show-large">
+          <button type="button" class="btn-expand-search search-icon"></button>
+        </div>
+        <div class="submenu">
+          <input class="member-search-old-nav ng-pristine ng-valid" type="text" placeholder="find members by username or skill" ng-model="vm.searchTerm" ng-keyup="vm.checkSubmit($event)">
+        </div>
+      </li>
+      <li ng-switch="vm.isAuth" ng-class="{&#39;anonymous-menu&#39;: !vm.isAuth}" class="menu-item link-group user-menu anonymous-menu">
+        <!-- ngSwitchWhen: true -->
+        <!-- ngSwitchWhen: false --><div ng-switch-when="false" class="menu-item-header ng-scope">
+          <a href="https://www.topcoder.com/register" class="tc-btn tc-btn-s btn-link">JOIN</a>
+          <a ng-click="vm.login()" class="tc-btn tc-btn-s tc-btn-ghost btn-link tc-header-login">LOG IN</a>
+        </div>
+      </li>
+      <!-- ngRepeat: header in vm.menuHeaders --><li ng-repeat="header in vm.menuHeaders" class="menu-item link-group ng-scope">
+        <div class="menu-item-header ng-binding">compete</div>
+        <ul class="submenu">
+          <!-- ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/challenges/design/active/?pageIndex=1" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/challenges/design/active/?pageIndex=1">
+              <img ng-src="/mf/i/nav/track-design.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/track-design.svg">
+              <div class="menu-text ng-binding">DESIGN CHALLENGES</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/challenges/develop/active/?pageIndex=1" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/challenges/develop/active/?pageIndex=1">
+              <img ng-src="/mf/i/nav/track-develop.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/track-develop.svg">
+              <div class="menu-text ng-binding">DEVELOPMENT CHALLENGES</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/challenges/data/active/?pageIndex=1" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/challenges/data/active/?pageIndex=1">
+              <img ng-src="/mf/i/nav/track-data.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/track-data.svg">
+              <div class="menu-text ng-binding">DATA SCIENCE CHALLENGES</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="https://arena.topcoder.com" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_blank" href="https://arena.topcoder.com/">
+              <img ng-src="/mf/i/nav/track-cp.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/track-cp.svg">
+              <div class="menu-text ng-binding">COMPETITIVE PROGRAMMING</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] -->
+        </ul>
+      </li><!-- end ngRepeat: header in vm.menuHeaders --><li ng-repeat="header in vm.menuHeaders" class="menu-item link-group ng-scope">
+        <div class="menu-item-header ng-binding">learn</div>
+        <ul class="submenu">
+          <!-- ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/getting-started/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/getting-started/">
+              <img ng-src="/mf/i/nav/rocket.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/rocket.svg">
+              <div class="menu-text ng-binding">GETTING STARTED</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/design/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/design/">
+              <img ng-src="/mf/i/nav/book-design.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/book-design.svg">
+              <div class="menu-text ng-binding">DESIGN</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/development/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/development/">
+              <img ng-src="/mf/i/nav/book-develop.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/book-develop.svg">
+              <div class="menu-text ng-binding">DEVELOPMENT</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/data-science/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/data-science/">
+              <img ng-src="/mf/i/nav/book-data.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/book-data.svg">
+              <div class="menu-text ng-binding">DATA SCIENCE</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/competitive%20programming/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/competitive%20programming/">
+              <img ng-src="/mf/i/nav/book-cp.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/book-cp.svg">
+              <div class="menu-text ng-binding">COMPETITIVE PROGRAMMING</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] -->
+        </ul>
+      </li><!-- end ngRepeat: header in vm.menuHeaders --><li ng-repeat="header in vm.menuHeaders" class="menu-item link-group ng-scope">
+        <div class="menu-item-header ng-binding">community</div>
+        <ul class="submenu">
+          <!-- ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/members/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/members/">
+              <img ng-src="/mf/i/nav/members.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/members.svg">
+              <div class="menu-text ng-binding">OVERVIEW</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/member-programs/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/member-programs/">
+              <img ng-src="/mf/i/nav/programs.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/programs.svg">
+              <div class="menu-text ng-binding">PROGRAMS</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="https://apps.topcoder.com/forums/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://apps.topcoder.com/forums/">
+              <img ng-src="/mf/i/nav/forums.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/forums.svg">
+              <div class="menu-text ng-binding">FORUMS</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/statistics/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/statistics/">
+              <img ng-src="/mf/i/nav/statistics.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/statistics.svg">
+              <div class="menu-text ng-binding">STATISTICS</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/community/events/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/community/events/">
+              <img ng-src="/mf/i/nav/events.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/events.svg">
+              <div class="menu-text ng-binding">EVENTS</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] --><li class="submenu-item ng-scope" ng-repeat="item in vm.menuLinks[header]">
+            <a ng-click="$event.stopPropagation();" ng-href="/blog/" ng-class="{ &#39;active&#39;: vm.isActive(item.href) }" class="menu-link" target="_self" href="https://www.topcoder.com/blog/">
+              <img ng-src="/mf/i/nav/blog.svg" class="menu-icon" src="./biset+dp 1– topcoder_files/blog.svg">
+              <div class="menu-text ng-binding">BLOG</div>
+            </a>
+          </li><!-- end ngRepeat: item in vm.menuLinks[header] -->
+        </ul>
+      </li><!-- end ngRepeat: header in vm.menuHeaders -->
+    </ul>
+  </header>
+</div>
+</div>
+<!-- Bugfix: I-108496 hidden element needed for non-firefox browsers to detect cache-persist status of page, used for above code to display member details -->
+<input type="hidden" id="cache-persist" value="1">
+  <!-- /#header -->
+
+<script type="text/javascript">
+	var siteurl = "https://www.topcoder.com";
+</script>
+<div class="content">
+	<div id="main">
+
+		<!-- Start Overview Page-->
+		<div class="pageTitleWrapper">
+			<div class="pageTitle container">
+				<h2 class="overviewPageTitle AssignmentProblemandHungarianAlgorithmPageTitle">Assignment Problem and Hungarian Algorithm</h2>
+			</div>
+		</div>
+
+
+
+
+		<article id="mainContent" class="splitLayout overviewPage">
+			<div class="container">
+				<div class="rightSplit  grid-3-3">
+					<div class="mainStream postContent pageContent grid-2-3">
+
+						<p>
+ By&nbsp;<strong><a class="tc_coder coder" href="https://www.topcoder.com/member-profile/x-ray" style="color: #DDCC00">x-ray</a></strong>– <em>TopCoder Member</em>
+<br><a href="http://apps.topcoder.com/forums/?module=ThreadList&amp;forumID=522020">Discuss this article in the forums</a>
+</p>
+
+<h3>Introduction</h3>
+
+<p>Are you familiar with the following situation? You open the Div I Medium and
+don’t know how to approach it, while a lot of people in your room submitted it
+in less than 10 minutes. Then, after the contest, you find out in the editorial
+that this problem can be simply reduced to a classical one. If yes, then this
+tutorial will surely be useful for you.</p>
+
+<h3>Problem statement</h3>
+
+<p>In this article we’ll deal with one optimization problem, which can be
+informally defined as:</p>
+
+<p><em>Assume that we have <strong>N</strong> workers and <strong>N</strong>
+jobs that should be done. For each pair (worker, job) we know salary that
+should be paid to worker for him to perform the job. Our goal is to complete
+all jobs minimizing total inputs, while assigning each worker to exactly one
+job and vice versa.</em></p>
+
+<p>Converting this problem to a formal mathematical definition we can form the
+following equations:<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image001.png">
+ – cost matrix, where <strong><em>c<sub>ij</sub></em></strong> – cost of worker
+<strong><em>i</em></strong> to perform job <strong><em>j</em></strong>.<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image003.png">
+ – resulting binary matrix, where <strong><em>x<sub>ij</sub></em></strong> = 1
+if and only if <strong><em>i<sup>th</sup></em></strong> worker is assigned to
+<strong><em>j<sup>th</sup></em></strong> job.<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image005.png">
+ – one worker to one job assignment.<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image007.png">
+ – one job to one worker assignment.<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image009.png">
+ – total cost function.</p>
+
+<p>We can also rephrase this problem in terms of graph theory. Let’s look at
+the job and workers as if they were a bipartite graph, where each edge between
+the <strong><em>i<sup>th</sup></em></strong> worker and
+<strong><em>j<sup>th</sup></em></strong> job has weight of
+<strong><em>c<sub>ij</sub></em></strong>. Then our task is to find
+minimum-weight matching in the graph (the matching will consists of
+<strong>N</strong> edges, because our bipartite graph is complete).</p>
+
+<p>Small example just to make things clearer:</p>
+
+<p style="text-align: center"><img alt="" src="./biset+dp 1– topcoder_files/image012.jpg"></p>
+
+<h3>General description of the algorithm</h3>
+
+<p>This problem is known as the assignment problem. The assignment problem is a
+special case of the transportation problem, which in turn is a special case of
+the <a href="https://www.topcoder.com/community/data-science/data-science-tutorials/minimum-cost-flow-part-one-key-concepts/">
+min-cost flow</a> problem, so it can be solved using algorithms that solve the
+more general cases. Also, our problem is a special case of binary integer
+linear programming problem (which is NP-hard). But, due to the specifics of the
+problem, there are more efficient algorithms to solve it. We’ll handle the
+assignment problem with the Hungarian algorithm (or Kuhn-Munkres algorithm).
+I’ll illustrate two different implementations of this algorithm, both graph
+theoretic, one easy and fast to implement with
+<strong>O(n<sup>4</sup>)</strong> complexity, and the other one with
+<strong>O(n<sup>3</sup>)</strong> complexity, but harder to implement.</p>
+
+<p>There are also implementations of Hungarian algorithm that do not use graph
+theory. Rather, they just operate with cost matrix, making different
+transformation of it (see [1] for clear explanation). We’ll not touch these
+approaches, because it’s less practical for TopCoder needs.</p>
+
+<h3>O(n<sup>4</sup>) algorithm explanation</h3>
+
+<p>As mentioned above, we are dealing with a bipartite graph. The main idea of
+the method is the following: consider we’ve found the perfect matching using
+only edges of weight 0 (hereinafter called “0-weight edges”). Obviously, these
+edges will be the solution of the assignment problem. If we can’t find perfect
+matching on the current step, then the Hungarian algorithm changes weights of
+the available edges in such a way that the new 0-weight edges appear and these
+changes do not influence the optimal solution.</p>
+
+<p>To clarify, let’s look at the step-by-step overview:</p>
+
+<p><strong>Step 0)</strong></p>
+
+<p><strong>A.</strong> For each vertex from left part (workers) find the
+minimal outgoing edge and subtract its weight from all weights connected with
+this vertex. This will introduce 0-weight edges (at least one).</p>
+
+<p><strong>B.</strong> Apply the same procedure for the vertices in the right
+part (jobs).</p>
+
+<p style="text-align: center"><img alt="" src="./biset+dp 1– topcoder_files/image014.jpg"></p>
+
+<p>Actually, this step is not necessary, but it decreases the number of main
+cycle iterations.</p>
+
+<p><strong>Step 1)</strong></p>
+
+<p><strong>A.</strong> Find the maximum matching using only 0-weight edges (for
+this purpose you can use max-flow algorithm, augmenting path algorithm,
+etc.).</p>
+
+<p><strong>B.</strong> If it is perfect, then the problem is solved. Otherwise
+find the minimum vertex cover <strong><em>V</em></strong> (for the subgraph
+with 0-weight edges only), the best way to do this is to use <a href="http://www.topcoder.com/tc?module=LinkTracking&amp;link=http://en.wikipedia.org/wiki/K%C3%B6nig%27s_theorem_(graph_theory)#proof&amp;refer=hungarianAlgorithm" target="_blank">Köning’s graph theorem</a>.</p>
+
+<p style="text-align: center"><img alt="" src="./biset+dp 1– topcoder_files/image016.jpg"></p>
+
+<p><strong>Step 2)</strong> Let <img alt="" src="./biset+dp 1– topcoder_files/image018.gif">
+ and adjust the weights using the following rule:</p>
+
+<p style="text-align: center"><img alt="" src="./biset+dp 1– topcoder_files/image020.gif"></p>
+
+<p><img alt="" src="./biset+dp 1– topcoder_files/image022.jpg"></p>
+
+<p><strong>Step 3)</strong> Repeat Step 1 until solved.</p>
+
+<p>But there is a nuance here; finding the maximum matching in step 1 on each
+iteration will cause the algorithm to become <strong>O(n<sup>5</sup>)</strong>.
+In order to avoid this, on each step we can just modify the matching from the
+previous step, which only takes <strong>O(n<sup>2</sup>)</strong>
+operations.</p>
+
+<p>It’s easy to see that no more than n2 iterations will occur, because every
+time at least one edge becomes 0-weight. Therefore, the overall complexity is
+<strong>O(n<sup>4</sup>)</strong>.</p>
+
+<h3>O(n<sup>3</sup>) algorithm explanation</h3>
+
+<p><em>Warning! In this section we will deal with the maximum-weighted matching
+problem. It’s obviously easy to transform minimum problem to the maximum one,
+just by setting:<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image024.gif">
+<br>
+or<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image026.gif">
+</em>.</p>
+
+<p>Before discussing the algorithm, let’s take a look at some of the
+theoretical ideas. Let’s start off by considering we have a complete bipartite
+graph <strong><em>G=(V,E)</em></strong> where <img alt="" src="./biset+dp 1– topcoder_files/image028.gif">
+ and <img alt="" src="./biset+dp 1– topcoder_files/image030.gif">
+, <strong><em>w(x,y)</em></strong> – weight of edge
+<strong><em>(x,y)</em></strong>.</p>
+
+<p><em>Vertex and set neighborhood</em></p>
+
+<p>Let <img alt="" src="./biset+dp 1– topcoder_files/image032.gif">
+. Then <img alt="" src="./biset+dp 1– topcoder_files/image034.gif">
+ is <strong><em>v</em>‘s</strong> neighborhood, or all vertices that share an
+edge with <strong>v</strong>.</p>
+
+<p>Let <img alt="" src="./biset+dp 1– topcoder_files/image036.gif">
+. Then <img alt="" src="./biset+dp 1– topcoder_files/image038.gif">
+ is <strong><em>S</em>‘s</strong> neighborhood, or all vertices that share an
+edge with a vertex in <strong>S</strong>.</p>
+
+<p><em>Vertex labeling</em></p>
+
+<p>This is simply a function <img alt="" src="./biset+dp 1– topcoder_files/image040.gif">
+ (for each vertex we assign some number called a label). Let’s call this
+labeling feasible if it satisfies the following condition: <img alt="" src="./biset+dp 1– topcoder_files/image042.gif">
+. In other words, the sum of the labels of the vertices on both sides of a
+given edge are greater than or equal to the weight of that edge.</p>
+
+<p><em>Equality subgraph</em></p>
+
+<p>Let <strong><em>G<sub>l</sub>=(V,E<sub>l</sub>)</em></strong> be a spanning
+subgraph of <strong>G</strong> (in other words, it includes all vertices from
+<strong>G</strong>). If <strong>G</strong> only those edges
+<strong>(x,y)</strong> which satisfy the following condition: <img alt="" src="./biset+dp 1– topcoder_files/image044.gif">
+, then it is an equality subgraph. In other words, it only includes those edges
+from the bipartite matching which allow the vertices to be perfectly
+feasible.</p>
+
+<p>Now we’re ready for the theorem which provides the connection between
+equality subgraphs and maximum-weighted matching:</p>
+
+<p><em>If <strong>M*</strong> is a perfect matching in the equality subgraph
+<strong>G<sub>l</sub></strong>, then <strong>M*</strong> is a maximum-weighted
+matching in <strong>G</strong>.</em></p>
+
+<p>The proof is rather straightforward, but if you want you can do it for
+practice. Let’s continue with a few final definitions:</p>
+
+<p><em>Alternating path and alternating tree</em></p>
+
+<p>Consider we have a matching <strong><em>M</em> (<img alt="" src="./biset+dp 1– topcoder_files/image046.gif">)</strong>.</p>
+
+<p>Vertex <img alt="" src="./biset+dp 1– topcoder_files/image032.gif">
+ is called matched if <img alt="" src="./biset+dp 1– topcoder_files/image051.gif">
+, otherwise it is called <em>exposed (free, unmatched)</em>.</p>
+
+<p>(In the diagram below, <strong>W<sub>1</sub></strong>,
+<strong>W<sub>2</sub></strong>, <strong>W<sub>3</sub></strong>,
+<strong>J<sub>1</sub></strong>, <strong>J<sub>3</sub></strong>,
+<strong>J<sub>4</sub></strong> are matched, <strong>W<sub>4</sub></strong>,
+<strong>J<sub>2</sub></strong> are exposed)</p>
+
+<p style="text-align: center"><img alt="" src="./biset+dp 1– topcoder_files/image048.jpg"></p>
+
+<p>Path <strong><em>P</em></strong> is called alternating if its edges
+alternate between <strong>M</strong> and <strong>E\M</strong>. (For example,
+(<strong>W<sub>4</sub></strong>, <strong>J<sub>4</sub></strong>,
+<strong>W<sub>3</sub></strong>, <strong>J<sub>3</sub></strong>,
+<strong>W<sub>2</sub></strong>, <strong>J<sub>2</sub></strong>) and
+(<strong>W<sub>4</sub></strong>, <strong>J<sub>1</sub></strong>,
+<strong>W<sub>1</sub></strong>) are alternating paths)</p>
+
+<p>If the first and last vertices in alternating path are exposed, it is called
+<em>augmenting</em> (because we can increment the size of the matching by
+inverting edges along this path, therefore matching unmatched edges and vice
+versa). ((<strong>W<sub>4</sub></strong>, <strong>J<sub>4</sub></strong>,
+<strong>W<sub>3</sub></strong>, <strong>J<sub>3</sub></strong>,
+<strong>W<sub>2</sub></strong>, <strong>J<sub>2</sub></strong>) – augmenting
+alternating path)</p>
+
+<p>A tree which has a root in some exposed vertex, and a property that every
+path starting in the root is alternating, is called an <em>alternating
+tree</em>. (Example on the picture above, with root in
+<strong>W<sub>4</sub></strong>)</p>
+
+<p>That’s all for the theory, now let’s look at the algorithm:</p>
+
+<p>First let’s have a look on the scheme of the Hungarian algorithm:</p>
+
+<p><strong>Step 0.</strong> Find some initial feasible vertex labeling and some
+initial matching.</p>
+
+<p><strong>Step 1.</strong> If <strong>M</strong> is perfect, then it’s
+optimal, so problem is solved. Otherwise, some exposed <img alt="" src="./biset+dp 1– topcoder_files/image053.gif">
+ exists; set <img alt="" src="./biset+dp 1– topcoder_files/image055.gif">
+. (<strong>x</strong> – is a root of the alternating tree we’re going to
+build). Go to step 2.</p>
+
+<p><strong>Step 2.</strong> If <img alt="" src="./biset+dp 1– topcoder_files/image057.gif">
+ go to step 3, else <img alt="" src="./biset+dp 1– topcoder_files/image059.gif">
+. Find</p>
+
+<table align="center" cellpadding="0" cellspacing="0" class="stat" style="width: 450px; visibility: visible;">
+ <tbody>
+ <tr class="light">
+ <td><img alt="" src="./biset+dp 1– topcoder_files/image061.gif"></td>
+
+ <td><strong>(1)</strong></td>
+ </tr>
+ </tbody>
+</table>
+
+<p>and replace existing labeling with the next one:</p>
+
+<table align="center" cellpadding="0" cellspacing="0" class="stat" style="width: 450px; visibility: visible;">
+ <tbody>
+ <tr class="dark">
+ <td><img alt="" src="./biset+dp 1– topcoder_files/image063.gif"></td>
+
+ <td><strong>(2)</strong></td>
+ </tr>
+ </tbody>
+</table>
+
+<p>Now replace <img alt="" src="./biset+dp 1– topcoder_files/image065.gif">
+ with <img alt="" src="./biset+dp 1– topcoder_files/image067.gif">
+</p>
+
+<p><strong>Step 3.</strong> Find some vertex <img alt="" src="./biset+dp 1– topcoder_files/image069.gif">
+. If <strong><em>y</em></strong> is exposed then an alternating path from
+<strong><em>x</em></strong> (root of the tree) to <strong><em>y</em></strong>
+exists, augment matching along this path and go to step 1. If
+<strong><em>y</em></strong> is matched in <strong>M</strong> with some vertex
+<strong><em>z</em></strong> add <strong><em>(z,y)</em></strong> to the
+alternating tree and set <img alt="" src="./biset+dp 1– topcoder_files/image071.gif">
+, go to step 2.</p>
+
+<p>And now let’s illustrate these steps by considering an example and writing
+some code.</p>
+
+<p>As an example we’ll use the previous one, but first let’s transform it to
+the maximum-weighted matching problem, using the second method from the two
+described above. (See Picture 1)</p>
+
+<p style="text-align: center"><img alt="" src="./biset+dp 1– topcoder_files/image073.jpg"><br>
+
+Picture 1</p>
+
+<p>Here are the global variables that will be used in the code:</p>
+<pre><span style="color:blue">#define N 55</span> <span style="color:green">//max number of vertices in one part</span>
+<span style="color:blue">#define INF 100000000</span> <span style="color:green">//just infinity</span>
+
+<span style="color:blue">int cost[N][N];</span> <span style="color:green">//cost matrix</span>
+<span style="color:blue">int n, max_match;</span> <span style="color:green">//n workers and n jobs</span>
+<span style="color:blue">int lx[N], ly[N];</span> <span style="color:green">//labels of X and Y parts</span>
+<span style="color:blue">int xy[N];</span> <span style="color:green">//xy[x] - vertex that is matched with x,</span>
+<span style="color:blue">int yx[N];</span> <span style="color:green">//yx[y] - vertex that is matched with y</span>
+<span style="color:blue">bool S[N], T[N];</span> <span style="color:green">//sets S and T in algorithm</span>
+<span style="color:blue">int slack[N];</span> <span style="color:green">//as in the algorithm description</span>
+<span style="color:blue">int slackx[N];</span> <span style="color:green">//slackx[y] such a vertex, that</span>
+ <span style="color:green">// l(slackx[y]) + l(y) - w(slackx[y],y) = slack[y]</span>
+<span style="color:blue">int prev[N];</span> <span style="color:green">//array for memorizing alternating paths</span>
+</pre>
+
+<p><em>Step 0:</em></p>
+
+<p>It’s easy to see that next initial labeling will be feasible:</p>
+
+<p style="text-align: center"><img alt="" src="./biset+dp 1– topcoder_files/image077.gif"></p>
+
+<p>And as an initial matching we’ll use an empty one. So we’ll get equality
+subgraph as on Picture 2. The code for initializing is quite easy, but I’ll
+paste it for completeness:</p>
+
+<p style="text-align: center"><img alt="" src="./biset+dp 1– topcoder_files/image075.jpg"></p>
+<pre><span style="color:blue">void</span> init_labels()
+{
+ memset(lx, 0, <span style="color:blue">sizeof</span>(lx));
+ memset(ly, 0, <span style="color:blue">sizeof</span>(ly));
+ <span style="color:blue">for</span> (<span style="color:blue">int</span> x = 0; x &lt; n; x++)
+ <span style="color:blue">for</span> (<span style="color:blue">int</span> y = 0; y &lt; n; y++)
+ lx[x] = max(lx[x], cost[x][y]);
+}
+</pre>
+
+<p>The next three steps will be implemented in one function, which will
+correspond to a single iteration of the algorithm. When the algorithm halts, we
+will have a perfect matching, that's why we'll have n iterations of the
+algorithm and therefore <strong>(n+1)</strong> calls of the function.</p>
+
+<p><em>Step 1</em></p>
+
+<p>According to this step we need to check whether the matching is already
+perfect, if the answer is positive we just stop algorithm, otherwise we need to
+clear <strong><em>S</em></strong>, <strong><em>T</em></strong> and alternating
+tree and then find some exposed vertex from the <strong><em>X</em></strong>
+part. Also, in this step we are initializing a <em>slack</em> array, I'll
+describe it on the next step.</p>
+<pre><span style="color:blue">void</span> augment() <span style="color:green">//main function of the algorithm</span>
+{
+ <span style="color:blue">if</span> (max_match == n) <span style="color:blue">return;</span> <span style="color:green">//check wether matching is already perfect</span>
+ <span style="color:blue">int</span> x, y, root; <span style="color:green">//just counters and root vertex</span>
+ <span style="color:blue">int</span> q[N], wr = 0, rd = 0; <span style="color:green">//q - queue for bfs, wr,rd - write and read</span>
+ <span style="color:green">//pos in queue</span>
+ memset(S, <span style="color:blue">false</span>, <span style="color:blue">sizeof</span>(S)); <span style="color:green">//init set S</span>
+ memset(T, <span style="color:blue">false</span>, <span style="color:blue">sizeof</span>(T)); <span style="color:green">//init set T</span>
+ memset(prev, -1, <span style="color:blue">sizeof</span>(prev)); <span style="color:green">//init set prev - for the alternating tree</span>
+ <span style="color:blue">for</span> (x = 0; x &lt; n; x++) <span style="color:green">//finding root of the tree</span>
+ <span style="color:blue">if</span> (xy[x] == -1)
+ {
+ q[wr++] = root = x;
+ prev[x] = -2;
+ S[x] = <span style="color:blue">true</span>;
+ <span style="color:blue">break</span>;
+ }
+
+ <span style="color:blue">for</span> (y = 0; y &lt; n; y++) <span style="color:green">//initializing slack array</span>
+ {
+ slack[y] = lx[root] + ly[y] - cost[root][y];
+ slackx[y] = root;
+ }
+</pre>
+
+<p><em>Step 2</em></p>
+
+<p>On this step, the alternating tree is completely built for the current
+labeling, but the augmenting path hasn't been found yet, so we need to improve
+the labeling. It will add new edges to the equality subgraph, giving an
+opportunity to expand the alternating tree. This is the main idea of the
+method; <em>we are improving the labeling until we find an augmenting path in
+the equality graph corresponding to the current labeling</em>. Let's turn back
+to step 2. There we just change labels using formulas <strong>(1)</strong> and
+<strong>(2)</strong>, but using them in an obvious manner will cause the
+algorithm to have <strong>O(n<sup>4</sup>)</strong> time. So, in order to avoid
+this we use a <em>slack</em> array initialized in <strong>O(n)</strong> time
+because we only augment the array created in step 1:<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image079.gif">
+<br>
+Then we just need O(n) to calculate a delta Δ (see (1)):<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image081.gif">
+</p>
+
+<p><em>Updating slack:</em><br>
+<strong>1)</strong> On <strong>step 3</strong>, when vertex
+<strong><em>x</em></strong> moves from <strong><em>X\S</em></strong> to
+<strong><em>S</em></strong>, this takes <strong>O(n)</strong>.<br>
+<strong>2)</strong> On <strong>step 2</strong>, when updating labeling, it's
+also takes <strong>O(n)</strong>, because:<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image081.gif">
+<br>
+So we get <strong>O(n)</strong> instead of <strong>O(n<sup>2</sup>)</strong> as
+in the straightforward approach.<br>
+Here's code for the label updating function:</p>
+<pre><span style="color:blue">void</span> update_labels()
+{
+ <span style="color:blue">int</span> x, y, delta = INF; <span style="color:green">//init delta as infinity</span>
+ <span style="color:blue">for</span> (y = 0; y &lt; n; y++) <span style="color:green">//calculate delta using slack</span>
+ <span style="color:blue">if</span> (!T[y])
+ delta = min(delta, slack[y]);
+ <span style="color:blue">for</span> (x = 0; x &lt; n; x++) <span style="color:green">//update X labels</span>
+ <span style="color:blue">if</span> (S[x]) lx[x] -= delta;
+ <span style="color:blue">for</span> (y = 0; y &lt; n; y++) <span style="color:green">//update Y labels</span>
+ <span style="color:blue">if</span> (T[y]) ly[y] += delta;
+ <span style="color:blue">for</span> (y = 0; y &lt; n; y++) <span style="color:green">//update slack array</span>
+ <span style="color:blue">if</span> (!T[y])
+ slack[y] -= delta;
+}
+</pre>
+
+<p><em>Step 3</em></p>
+
+<p>In step 3, first we build an alternating tree starting from some exposed
+vertex, chosen at the beginning of each iteration. We will do this using
+breadth-first search algorithm. If on some step we meet an exposed vertex from
+the <strong><em>Y</em></strong> part, then finally we can augment our path,
+finishing up with a call to the main function of the algorithm. So the code
+will be the following:</p>
+
+<p><strong>1)</strong> Here's the function that adds new edges to the
+alternating tree:</p>
+<pre><span style="color:blue">void</span> add_to_tree(<span style="color:blue">int</span> x, <span style="color:blue">int</span> prevx) 
+<span style="color:green">//x - current vertex,prevx - vertex from X before x in the alternating path,
+//so we add edges (prevx, xy[x]), (xy[x], x)</span>
+{
+ S[x] = <span style="color:blue">true</span>; <span style="color:green">//add x to S</span>
+ prev[x] = prevx; <span style="color:green">//we need this when augmenting</span>
+ <span style="color:blue">for</span> (<span style="color:blue">int</span> y = 0; y &lt; n; y++) <span style="color:green">//update slacks, because we add new vertex to S</span>
+ <span style="color:blue">if</span> (lx[x] + ly[y] - cost[x][y] &lt; slack[y])
+ {
+ slack[y] = lx[x] + ly[y] - cost[x][y];
+ slackx[y] = x;
+ }
+}
+</pre>
+
+<p><strong>3)</strong> And now, the end of the
+<strong><em>augment()</em></strong> function:</p>
+<pre><span style="color:green">//second part of augment() function</span>
+ <span style="color:blue">while</span> (<span style="color:blue">true</span>) <span style="color:green">//main cycle</span>
+ {
+ <span style="color:blue">while</span> (rd &lt; wr) <span style="color:green">//building tree with bfs cycle</span>
+ {
+ x = q[rd++]; <span style="color:green">//current vertex from X part</span>
+ <span style="color:blue">for</span> (y = 0; y &lt; n; y++) <span style="color:green">//iterate through all edges in equality graph</span>
+ <span style="color:blue">if</span> (cost[x][y] == lx[x] + ly[y] &amp;&amp; !T[y])
+ {
+ <span style="color:blue">if</span> (yx[y] == -1) <span style="color:blue">break</span>; <span style="color:green">//an exposed vertex in Y found, so
+ //augmenting path exists!</span>
+ T[y] = <span style="color:blue">true</span>; <span style="color:green">//else just add y to T,</span>
+ q[wr++] = yx[y]; <span style="color:green">//add vertex yx[y], which is matched
+ //with y, to the queue</span>
+ add_to_tree(yx[y], x); <span style="color:green">//add edges (x,y) and (y,yx[y]) to the tree</span>
+ }
+ <span style="color:blue">if</span> (y &lt; n) <span style="color:blue">break</span>; <span style="color:green">//augmenting path found!</span>
+ }
+ <span style="color:blue">if</span> (y &lt; n) <span style="color:blue">break</span>; <span style="color:green">//augmenting path found!</span>
+
+ update_labels(); <span style="color:green">//augmenting path not found, so improve labeling</span>
+ wr = rd = 0; 
+ <span style="color:blue">for</span> (y = 0; y &lt; n; y++) 
+ <span style="color:green">//in this cycle we add edges that were added to the equality graph as a
+ //result of improving the labeling, we add edge (slackx[y], y) to the tree if
+ //and only if !T[y] &amp;&amp; slack[y] == 0, also with this edge we add another one
+ //(y, yx[y]) or augment the matching, if y was exposed</span>
+ <span style="color:blue">if</span> (!T[y] &amp;&amp; slack[y] == 0)
+ {
+ <span style="color:blue">if</span> (yx[y] == -1) <span style="color:green">//exposed vertex in Y found - augmenting path exists!</span>
+ {
+ x = slackx[y];
+ <span style="color:blue">break</span>;
+ }
+ <span style="color:blue">else</span>
+ {
+ T[y] = <span style="color:blue">true</span>; <span style="color:green">//else just add y to T,</span>
+ <span style="color:blue">if</span> (!S[yx[y]]) 
+ {
+ q[wr++] = yx[y]; <span style="color:green">//add vertex yx[y], which is matched with
+ //y, to the queue</span>
+ add_to_tree(yx[y], slackx[y]); <span style="color:green">//and add edges (x,y) and (y,
+ //yx[y]) to the tree</span>
+ }
+ }
+ }
+ <span style="color:blue">if</span> (y &lt; n) <span style="color:blue">break</span>; <span style="color:green">//augmenting path found!</span>
+ }
+
+ <span style="color:blue">if</span> (y &lt; n) <span style="color:green">//we found augmenting path!</span>
+ {
+ max_match++; <span style="color:green">//increment matching
+ //in this cycle we inverse edges along augmenting path</span>
+ <span style="color:blue">for</span> (<span style="color:blue">int</span> cx = x, cy = y, ty; cx != -2; cx = prev[cx], cy = ty)
+ {
+ ty = xy[cx];
+ yx[cy] = cx;
+ xy[cx] = cy;
+ }
+ augment(); <span style="color:green">//recall function, go to step 1 of the algorithm</span>
+ }
+}<span style="color:green">//end of augment() function</span>
+</pre>
+
+<p>The only thing in code that hasn't been explained yet is the procedure that
+goes after labels are updated. Say we've updated labels and now we need to
+complete our alternating tree; to do this and to keep algorithm in
+<strong>O(n<sup>3</sup>)</strong> time (it's only possible if we use each edge
+no more than one time per iteration) we need to know what edges should be added
+without iterating through all of them, and the answer for this question is to
+use BFS to add edges only from those vertices in <strong>Y</strong>, that are
+not in <strong>T</strong> and for which <strong>slack[y] = 0</strong> (it's
+easy to prove that in such way we'll add all edges and keep algorithm to be
+<strong>O(n<sup>3</sup>)</strong>). See picture below for explanation:</p>
+
+<p style="text-align: center"><img alt="" src="./biset+dp 1– topcoder_files/image085.jpg"></p>
+
+<p>At last, here's the function that implements Hungarian algorithm:</p>
+<pre><span style="color:blue">int</span> hungarian()
+{
+ <span style="color:blue">int</span> ret = 0; <span style="color:green">//weight of the optimal matching</span>
+ max_match = 0; <span style="color:green">//number of vertices in current matching</span>
+ memset(xy, -1, <span style="color:blue">sizeof</span>(xy)); 
+ memset(yx, -1, <span style="color:blue">sizeof</span>(yx));
+ init_labels(); <span style="color:green">//step 0</span>
+ augment(); <span style="color:green">//steps 1-3</span>
+ <span style="color:blue">for</span> (<span style="color:blue">int</span> x = 0; x &lt; n; x++) <span style="color:green">//forming answer there</span>
+ ret += cost[x][xy[x]];
+ <span style="color:blue">return</span> ret;
+}
+</pre>
+
+<p>To see all this in practice let's complete the example started on step
+0.</p>
+
+<table align="center" cellpadding="0" cellspacing="0" class="stat" style="width: 100%; visibility: visible;">
+ <tbody>
+ <tr class="light">
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image087.jpg"></td>
+
+ <td align="center">Build<br>
+ alternating tree</td>
+
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image089.jpg"></td>
+
+ <td align="center">Augmenting<br>
+ path found</td>
+
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image091.jpg"></td>
+
+ <td align="center">Build<br>
+ alternating tree</td>
+ </tr>
+
+ <tr class="light">
+ <td align="center" style="font-size:20px;">→</td>
+
+ <td align="center" style="font-size:20px;">→</td>
+
+ <td align="center" style="font-size:20px;">→</td>
+ </tr>
+
+ <tr class="dark">
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image093.jpg"></td>
+
+ <td align="center">Update labels<br>
+ (Δ=1)</td>
+
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image095.jpg"></td>
+
+ <td align="center">Build<br>
+ alternating tree</td>
+
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image097.jpg"></td>
+
+ <td align="center">Update labels<br>
+ (Δ=1)</td>
+ </tr>
+
+ <tr class="dark">
+ <td align="center" style="font-size:20px;">→</td>
+
+ <td align="center" style="font-size:20px;">→</td>
+
+ <td align="center" style="font-size:20px;">→</td>
+ </tr>
+
+ <tr class="light">
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image099.jpg"></td>
+
+ <td align="center">Build<br>
+ alternating tree</td>
+
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image101.jpg"></td>
+
+ <td align="center">Augmenting<br>
+ path found</td>
+
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image103.jpg"></td>
+
+ <td align="center">Build<br>
+ alternating tree</td>
+ </tr>
+
+ <tr class="light">
+ <td align="center" style="font-size:20px;">→</td>
+
+ <td align="center" style="font-size:20px;">→</td>
+
+ <td align="center" style="font-size:20px;">→</td>
+ </tr>
+
+ <tr class="dark">
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image105.jpg"></td>
+
+ <td align="center">Update labels<br>
+ (Δ=2)</td>
+
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image107.jpg"></td>
+
+ <td align="center">Build<br>
+ alternating tree</td>
+
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image109.jpg"></td>
+
+ <td align="center">Update labels<br>
+ (Δ=1)</td>
+ </tr>
+
+ <tr class="dark">
+ <td align="center" style="font-size:20px;">→</td>
+
+ <td align="center" style="font-size:20px;">→</td>
+
+ <td align="center" style="font-size:20px;">→</td>
+ </tr>
+
+ <tr class="light">
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image111.jpg"></td>
+
+ <td align="center">Build<br>
+ alternating tree</td>
+
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image113.jpg"></td>
+
+ <td align="center">Augmenting<br>
+ path found</td>
+
+ <td align="center" rowspan="2"><img alt="" src="./biset+dp 1– topcoder_files/image115.jpg"></td>
+
+ <td align="center" rowspan="2">Optimal matching found</td>
+ </tr>
+
+ <tr class="light">
+ <td align="center" style="font-size:20px;">→</td>
+
+ <td align="center" style="font-size:20px;">→</td>
+ </tr>
+ </tbody>
+</table>
+
+<p>Finally, let's talk about the complexity of this algorithm. On each
+iteration we increment matching so we have <strong>n</strong> iterations. On
+each iterations each edge of the graph is used no more than one time when
+finding augmenting path, so we've got <strong>O(n<sup>2</sup>)</strong>
+operations. Concerning labeling we update <em>slack</em> array each time when
+we insert vertex from <strong><em>X</em></strong> into
+<strong><em>S</em></strong>, so this happens no more than n times per
+iteration, updating <em>slack</em> takes <strong>O(n)</strong> operations, so
+again we've got <strong>O(n<sup>2</sup>)</strong>. Updating labels happens no
+more than n time per iterations (because we add at least one vertex from
+<strong><em>Y</em></strong> to <strong><em>T</em></strong> per iteration), it
+takes <strong>O(n)</strong> operations - again
+<strong>O(n<sup>2</sup>)</strong>. So total complexity of this implementation
+is <strong>O(n<sup>3</sup>)</strong>.</p>
+
+<h3>Some practice</h3>
+
+<p>For practice let's consider the medium <a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=7726&amp;rd=10787">problem</a> from SRM 371
+(div. 1). It's obvious we need to find the maximum-weighted matching in graph,
+where the <strong><em>X</em></strong> part is our players, the
+<strong><em>Y</em></strong> part is the opposing club players, and the weight
+of each edge is:<br>
+<img alt="" src="./biset+dp 1– topcoder_files/image117.gif">
+</p>
+
+<p>Though this problem has a much simpler solution, this one is obvious and
+fast coding can bring more points.</p>
+
+<p>Try this <a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=8143&amp;rd=10789">one</a> for more practice.
+I hope this article has increased the wealth of your knowledge in classical
+algorithms… Good luck and have fun!</p>
+
+<h3>References</h3>
+
+<ol>
+ <li>Mike Dawes "<a href="http://www.topcoder.com/tc?module=LinkTracking&amp;link=http://www.math.uwo.ca/~mdawes/courses/344/kuhn-munkres.pdf&amp;refer=hungarianAlgorithm" target="_blank">The Optimal Assignment Problem</a>"
+ </li>
+
+ <li>Mordecaj J. Golin "<a href="http://www.topcoder.com/tc?module=LinkTracking&amp;link=http://www.cse.ust.hk/~golin/COMP572/Notes/Matching.pdf&amp;refer=hungarianAlgorithm" target="_blank">Bipartite Matching and the Hungarian Method</a>"
+ </li>
+
+ <li>Samir Khuller "<a href="http://www.topcoder.com/tc?module=LinkTracking&amp;link=https://drum.umd.edu/dspace/bitstream/1903/592/4/CS-TR-3113.pdf&amp;refer=hungarianAlgorithm" target="_blank">Design and Analysis of Algorithms: Course Notes</a>"
+ </li>
+
+ <li>Lawler E.L. "<a href="http://www.topcoder.com/tc?module=LinkTracking&amp;link=http://books.google.com/books?id=m4MvtFenVjEC%26hl=uk&amp;refer=hungarianAlgorithm" target="_blank">Combinatorial Optimization: Networks and Matroids</a>"
+ </li>
+</ol><style>
+
+.formFrame { background: #f5f5f5; margin: auto; }.formFrame td { border: 1px solid #ccc; padding: 5px; }.sideNote {background: #f5f5f5; margin: 15px; padding: 15px; border: 1px solid #eee;}pre {background: #f5f5f5; margin: 15px; padding: 15px; border: 1px solid #eee; overflow: scroll;}p{padding-bottom:0 !important;}
+
+</style>					
+
+						<!-- /.pageContent -->
+
+					</div>
+					<!-- /.mainStream -->
+
+					<aside class="sideStream  grid-1-3">
+								<div class="textwidget"><div style="display: inline-block; width: 320px; height: 44px; overflow: hidden; background-color: #f1f1f1; padding:5px;">
+           <p style="padding-top: 12px; padding-left: 7px; font-size: 22px">
+    More Resources</p>
+       </div>
+
+
+	  <br>
+<p style="padding-top: 12px; padding-left: 10px; line-height: 150%"><a href="http://www.topcoder.com/community/data-science/data-science-tutorials/">Member Tutorials </a><br>
+Read more than 40 data science tutorials written by topcoder members. </p>
+<p style="padding-top: 12px; padding-left: 10px; line-height: 150%"><a href="http://www.topcoder.com/community/data-science/data-science-editorials/">Problem Set Analysis </a><br>
+Read editorials explaining the problem and solution for each Single Round Match (SRM). </p>
+<p style="padding-top: 12px; padding-left: 10px; line-height: 150%"><a href="http://www.topcoder.com/community/data-science/getting-started-in-data-science/">
+Data Science Guide</a><br>
+New to topcoder's data science track? Read this guide for an overview on how to get started in the arena and how competitions work.</p>
+<p style="padding-top: 12px; padding-left: 10px; line-height: 150%"><a href="http://help.topcoder.com/">Help Center </a><br>
+Need specifics about the process or the rules? Everything you need to know about competing at topcoder can be found in the Help Center.</p>
+<p style="padding-top: 12px; padding-left: 10px; line-height: 150%"><a href="http://apps.topcoder.com/forums/">Member Forums</a> <br>
+Join your peers in our member forums and ask questions from the real experts - topcoder members!</p>
+</div>
+							</aside>
+
+					<!-- /.sideStream -->
+					<div class="clear"></div>
+				</div>
+				<!-- /.rightSplit -->
+			</div>
+		</article>
+		<!-- /#mainContent -->
+<footer class="bottom-footer">
+  <!-- Footer links -->
+  <nav class="menu-item">
+    <div class="menu-item-header show-small">OTHERS</div>
+    <ul class="submenu">
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="https://www.topcoder.com/sitemap" class="menu-link">SITEMAP</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="https://www.topcoder.com/about" class="menu-link">ABOUT US</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="https://www.topcoder.com/contact-us" class="menu-link">CONTACT US</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://help.topcoder.com/" target="_blank" class="menu-link">HELP CENTER</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://topcoder.com/community/how-it-works/privacy-policy/" class="menu-link">PRIVACY POLICY</a></li>
+      <li class="submenu-item"><a ng-click="$event.stopPropagation();" href="http://topcoder.com/community/how-it-works/terms/" class="menu-link">TERMS</a></li>
+    </ul>
+    <!-- Social links -->
+  </nav>
+  <div class="social-links">
+    <p>Topcoder is also on</p><a href="https://www.facebook.com/topcoder" target="fbwindow" class="fb-link"></a><a href="http://www.twitter.com/topcoder" target="twwindow" class="twitter-link"></a><a href="https://www.linkedin.com/company/topcoder" target="liwindow" class="linkedin-link"></a><a href="https://plus.google.com/u/0/b/104268008777050019973/104268008777050019973/posts" target="gpwindow" class="google-link"></a>
+  </div>
+  <p class="copyright-notice">© 2016 Topcoder. All Rights Reserved</p>
+</footer>
+</div>
+<!-- /.content -->
+</div>
+<!-- /#wrapper -->
+
+
+<div id="bgModal"></div><!-- background modal -->
+<div id="bgOverlapModal"></div><!-- background modal -->
+<div id="bgLoadingModal"><span></span></div><!-- background loading -->
+<div id="thanks" class="modal">
+  <a href="javascript:;" class="closeBtn closeModal"></a>
+
+  <div class="content">
+    <h2>Thanks for joining!</h2>
+
+    <p>We have sent you an email with activation instructions.<br>If you do not receive that email within 1 hour,
+      please email <a href="mailto:support@topcoder.com">support@topcoder.com</a>.</p>
+
+    <div>
+      <a href="javascript:;" class="btn closeModal redirectOnConfirm">Close</a>
+    </div>
+  </div>
+</div><!-- END #thanks -->
+<div id="registerSuccess" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Registered!</h2>
+    <p class="success">Thank you for registering. You may now download the challenge files and participate in the challenge forums.</p>
+    <p class="submitBtn">
+      <a class="btn closeModalReg" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #registerSuccess -->
+<div id="registerFailed" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Info</h2>
+    <p class="failedMessage"></p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #registerFailed -->
+
+<div id="showSubmission" class="modal">
+    <a href="javascript:;" class="btnClose closePopupModal"></a>
+    <div class="content">
+       <img alt="" style="width:910px; height:850px">
+    </div>
+</div><!-- END #show submission -->
+
+<div id="filterSavedSuccess" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Success</h2>
+    <p class="success">Your filters have been saved and stored in the "My Filters" dropdown list.</p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #filterSavedSuccess -->
+
+<div id="filterSavedFailed" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Info</h2>
+    <p class="failedMessage"></p>
+    <p class="submitBtn">
+      <a class="btn closeModal" href="javascript:;">OK</a>
+    </p>
+  </div>
+</div><!-- END #filterSavedFailed -->
+
+<div id="designSubmissionCommentExample" class="modal">
+  <a href="javascript:;" class="btnClose closeModal"></a>
+  <div class="content">
+    <h2>Comment Examples</h2>
+
+    <strong>Example 1:</strong><br>
+    The logo represents movement and "taking action" rather than being stagnant.
+    The colors I chose signify power and give the brand a strong feel.<br><br>
+
+    <strong>Example 2:</strong><br>
+    This is a revised version of my previous submission. Changes include a new
+    header graphic, new font choices for the pop-up box and new icons for the
+    widget on the fourth page.<br><br>
+
+    <strong>Example 3:</strong><br>
+    This is my Round 2 submission. I have implemented all of the feedback you
+    gave me after Round 1 and I hope you like the changes.<br><br>
+  </div>
+</div><!-- END #show submission -->
+
+<div id="typeTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <p class="contestTy"></p>
+    </div>
+    <div class="arrow"></div>
+  </div>
+</div><!-- /.tooltip -->
+<div id="winnerTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <div class="winnerInfo"></div>
+    </div>
+    <div class="arrow alt"></div>
+  </div>
+</div><!-- /.tooltip -->
+<div id="badgeTooltip" class="tooltip hide">
+  <div class="inner">
+    <header></header>
+    <div class="data">
+      <p class="earnedOn"></p>
+    </div>
+    <div class="data">
+      <p class="currentlyEarned"><span></span></p>
+    </div>
+    <div class="arrow"></div>
+  </div>
+</div><!-- /.tooltip -->
+<link rel="stylesheet" id="ng-grid-css" href="./biset+dp 1– topcoder_files/ng-grid.css" type="text/css" media="all">
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/Selectyze.jquery.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/tcapi.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/jquery-ui.min.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/auth0-1.6.4.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/default.min.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/angular.min.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/angular-animate.min.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/angular-route.min.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/underscore.min.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/restangular.min.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/ng-grid.min.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/ng-grid-flexible-height.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/angular-cookies.min.js"></script>
+<script type="text/javascript" src="./biset+dp 1– topcoder_files/angular-ui-router.min.js"></script>
+<script>
+  window.prerenderReady = false;
+  function getParameterByName(name, source) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(source || location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+  function getHashParameterByName(name, source) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\#&]" + name + "=([^&#]*)"),
+    results = regex.exec(source || location.hash);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+</script>
+
+
+<!-- START Marketo Code -->
+<script type="text/javascript">
+document.write(unescape("%3Cscript src='//munchkin.marketo.net/munchkin.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./biset+dp 1– topcoder_files/munchkin(1).js" type="text/javascript"></script>
+<script>Munchkin.init('921-UOU-112', {"wsInfo":"jFRS"});</script>
+<!-- END Marketo Code -->
+
+<!-- START Google Retargeting Marketing Code -->
+<script type="text/javascript">
+adroll_adv_id = "LOUA2FVRTJDYZC2BMX72Z7";
+adroll_pix_id = "4XU6H3BYL5EQBFHZM4DIUU";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+</script>
+<!-- END Google Retargeting Marketing Code -->
+
+
+<!-- START Twitter Marketing Code -->
+<script src="./biset+dp 1– topcoder_files/oct.js" type="text/javascript"></script>
+<script type="text/javascript">
+twttr.conversion.trackPid('l4r4k');
+</script>
+<noscript>
+&lt;img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4r4k&amp;p_id=Twitter" /&gt;
+&lt;img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4r4k&amp;p_id=Twitter" /&gt;
+</noscript>
+<!-- END Twitter Marketing Code -->
+
+<!-- START KISSmetrics -->
+<script type="text/javascript">var _kmq = _kmq || [];
+var _kmk = _kmk || 'aa23cd43c455ef33b6a0df3de81a79af9ea30f75';
+function _kms(u){
+  setTimeout(function(){
+    var d = document, f = d.getElementsByTagName('script')[0],
+    s = d.createElement('script');
+    s.type = 'text/javascript'; s.async = true; s.src = u;
+    f.parentNode.insertBefore(s, f);
+  }, 1);
+}
+_kms('//i.kissmetrics.com/i.js');
+_kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+</script>
+<!-- END KISSmetrics -->
+
+<!-- Start of topcoder Zendesk Widget script -->
+<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("https://assets.zendesk.com/embeddable_framework/main.js","topcoder.zendesk.com");
+/*]]>*/</script>
+<!-- End of topcoder Zendesk Widget script -->
+
+<script>
+(function() {
+  var headerApp = angular.module('tc.header', [])
+  headerApp.config(function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Allow same origin resource loads.
+      'self',
+      // Allow loading from subdomains.  Notice the difference between * and **.
+      'http://*.topcoder.com/**',
+      'https://*.topcoder.com/**',
+      'http://*.topcoder-qa.com/**',
+      'https://*.topcoder-qa.com/**',
+      'http://*.topcoder-dev.com/**',
+      'https://*.topcoder-dev.com/**'
+    ]);
+  });
+  headerApp.directive('ngHeaderBootstrap', function(){
+    return {
+      restrict: 'C',
+      templateUrl: '/mf/js/app/header/partials/header-nav.html',
+      controller: function($scope, $timeout){
+        $scope.vm = vm = {};
+        $scope.main = {};
+        $scope.main.menuVisible = false;
+        vm.isAuth = false;
+
+        if (app.isLoggedIn()) {
+          vm.isAuth = true;
+          app.getHandle(function(handle) {
+            $.get(tcconfig.apiURL + '/users/' + handle, function(data) {
+              var photoLink = data['photoLink'];
+              if (photoLink) {
+                if (photoLink.indexOf('//') == -1) {
+                  photoLink = tcconfig.communityURL + data['photoLink']
+                }
+              } else {
+                photoLink = tcconfig.communityURL + '/i/m/nophoto_login.gif';
+              }
+              
+              var color = '';
+              var ratings = data['ratingSummary'];
+              if (ratings) {
+                var maxRating = 0;
+                for (var i = 0; i < ratings.length; i++) {
+                  if (maxRating < ratings[i]['rating']) {
+                    maxRating = ratings[i]['rating'];
+                    color = ratings[i]['colorStyle'].split(": ")[1];
+                  }
+                }
+              } else if (data['isPM'] == true) {
+                color = '#FF9900';
+              }
+              
+              $timeout(function() {
+                vm.handleStyle = { color: color };
+                vm.photoURL = photoLink;
+              });
+            });
+
+            $timeout(function() {
+              vm.userHandle = handle;
+              vm.userMenu = [
+                { 'href': '/my-dashboard', 'text': 'DASHBOARD', 'icon': '/mf/i/nav/dashboard.svg' },
+                { 'href': '/members/' + handle, 'text': 'MY PROFILE', 'icon': '/mf/i/nav/profile.svg' },
+                { 'href': 'https:' + tcconfig.communityURL + '/PactsMemberServlet?module=PaymentHistory&full_list=false', 'text': 'PAYMENTS', 'icon': '/mf/i/nav/wallet.svg' },
+                { 'href': '/settings/profile', 'text': 'SETTINGS', 'icon': '/mf/i/nav/settings.svg' },
+              ];
+            });
+          });
+        }
+
+        vm.menuHeaders = [ 'compete', 'learn', 'community' ];
+        vm.menuLinks =
+        {
+          'compete': [
+              { 'href':  "/challenges/design/active/?pageIndex=1", 'text': 'DESIGN CHALLENGES', 'icon': '/mf/i/nav/track-design.svg' },
+              { 'href':  "/challenges/develop/active/?pageIndex=1", 'text': 'DEVELOPMENT CHALLENGES', 'icon': '/mf/i/nav/track-develop.svg' },
+              { 'href':  "/challenges/data/active/?pageIndex=1", 'text': 'DATA SCIENCE CHALLENGES', 'icon': '/mf/i/nav/track-data.svg' },
+              { 'href':  'https:' + tcconfig.arenaURL, 'text': 'COMPETITIVE PROGRAMMING', 'icon': '/mf/i/nav/track-cp.svg', 'target': '_blank' },
+          ],
+          'learn': [
+              { 'href': '/getting-started/', 'text': 'GETTING STARTED', 'icon': '/mf/i/nav/rocket.svg' },
+              { 'href': '/community/design/', 'text': 'DESIGN', 'icon': '/mf/i/nav/book-design.svg' },
+              { 'href': '/community/development/', 'text': 'DEVELOPMENT', 'icon': '/mf/i/nav/book-develop.svg' },
+              { 'href': '/community/data-science/', 'text': 'DATA SCIENCE', 'icon': '/mf/i/nav/book-data.svg' },
+              { 'href': '/community/competitive%20programming/', 'text': 'COMPETITIVE PROGRAMMING', 'icon': '/mf/i/nav/book-cp.svg' },
+          ],
+          'community': [
+              { 'href': '/community/members/', 'text': 'OVERVIEW', 'icon': '/mf/i/nav/members.svg' },
+              { 'href': '/community/member-programs/', 'text': 'PROGRAMS', 'icon': '/mf/i/nav/programs.svg' },
+              { 'href': 'https://' + tcconfig.forumsAppURL, 'text': 'FORUMS', 'icon': '/mf/i/nav/forums.svg' },
+              { 'href': '/community/statistics/', 'text': 'STATISTICS', 'icon': '/mf/i/nav/statistics.svg' },
+              { 'href': '/community/events/', 'text': 'EVENTS', 'icon': '/mf/i/nav/events.svg' },
+              { 'href': '/blog/', 'text': 'BLOG', 'icon': '/mf/i/nav/blog.svg' }
+          ]
+        };
+
+        vm.checkSubmit = function(ev) {
+          if (ev.keyCode === 13)
+            window.location.replace(tcconfig.mainURL + '/search/members/?q=' + window.encodeURIComponent(vm.searchTerm));
+        }
+
+        vm.isActive = function(href) {
+          if (window.location.pathname == href)
+            return true;
+          return false;
+        }
+
+        vm.login = function() {
+          window.location.href = "/login?next=" + encodeURIComponent(window.location.href);
+        }
+
+        vm.logout = function() {
+          document.cookie = 'tcsso=; path=/; domain=.' + tcconfig.domain + '; expires=' + new Date(0).toUTCString();
+          document.cookie = 'tcjwt=; path=/; domain=.' + tcconfig.domain + '; expires=' + new Date(0).toUTCString();
+          main.menuVisible = vm.isAuth = false;
+          window.location.href = '/logout';
+        }
+      }
+    };
+  });
+
+  angular.bootstrap($('.ng-header-bootstrap'), ['tc.header']);
+})();
+</script>
+
+</div><iframe src="javascript:false" title="" style="display: none;" src="./biset+dp 1– topcoder_files/saved_resource.html"></iframe><script src="https://analytics.twitter.com/i/adsct?p_id=Twitter&amp;p_user_id=0&amp;txn_id=l4r4k&amp;tw_sale_amount=0&amp;tw_order_quantity=0&amp;tw_iframe_status=0&amp;tpx_cb=twttr.conversion.loadPixels"></script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"496af5ee90","applicationID":"5697815","transactionName":"ZlcBbBQAChBSARIKXV8dIlsSCAsNHBYDDkJdUxddSw4SBkEUDwZFHEUKXAEEEApJBwI=","queueTime":0,"applicationTime":102,"atts":"ShACGlwaGR4=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div><iframe style="border: none; z-index: 999998; transform: translateZ(0px); position: absolute; bottom: auto; opacity: 1; right: 0px; width: 374px; height: 416px; top: -9999px; left: -9999px; background: transparent;" id="ticketSubmissionForm" class="zEWidget-ticketSubmissionForm" data-ze-reactid=".0" src="./biset+dp 1– topcoder_files/saved_resource(1).html"></iframe></div><div><iframe style="border: none; z-index: 999998; transform: translateZ(0px); position: fixed; bottom: 0px; opacity: 1; right: 0px; width: 140px; height: 48px; margin-left: 20px; margin-right: 20px; margin-bottom: 10px; background: transparent;" id="launcher" class="zEWidget-launcher zEWidget-launcher--active" data-ze-reactid=".2" src="./biset+dp 1– topcoder_files/saved_resource(2).html"></iframe></div><div><iframe style="border: none; z-index: 2147483647; transform: translateZ(0px); position: absolute; bottom: auto; opacity: 1; right: 0px; left: -9999px; margin-left: -310px; width: 652px; height: 193px; top: -9999px; background: transparent;" id="nps" class="zEWidget-nps" data-ze-reactid=".4" src="./biset+dp 1– topcoder_files/saved_resource(3).html"></iframe></div><div><iframe style="border: none; z-index: 2147483647; transform: translateZ(0px); position: absolute; bottom: auto; opacity: 1; right: 0px; top: -9999px; height: 190px; width: 412px; left: -9999px; background: transparent;" id="ipm" class="zEWidget-ipm" data-ze-reactid=".6" src="./biset+dp 1– topcoder_files/saved_resource(4).html"></iframe></div></body></html>

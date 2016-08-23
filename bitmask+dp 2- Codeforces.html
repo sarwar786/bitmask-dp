@@ -1,0 +1,2675 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- saved from url=(0036)http://codeforces.com/blog/entry/337 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="X-Csrf-Token" content="b77e1b6a0ee74745c176b4f82a35ae62">
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=0.01">
+    <script id="facebook-jssdk" src="./bitmask+dp 2- Codeforces_files/all.js"></script><script type="text/javascript" async="" src="./bitmask+dp 2- Codeforces_files/ga.js"></script><script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery-1.8.3.js"></script>
+    <script type="application/javascript">
+        function adjustViewport() {
+            var screenWidthPx = Math.min($(window).width(), window.screen.width);
+            var siteWidthPx = 1100; // min width of site
+            var ratio = Math.min(screenWidthPx / siteWidthPx, 1.0);
+            var viewport = "width=device-width, initial-scale=" + ratio;
+            $('#viewport').attr('content', viewport);
+            var style = $('<style>html * { max-height: 1000000px; }</style>');
+            $('html > head').append(style);
+        }
+
+        if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+            adjustViewport();
+        }
+    </script>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta http-equiv="profileName" content="c2">
+    <meta name="google-site-verification" content="OTd2dN5x4nS4OPknPI9JFg36fKxjqY0i1PSfFPv_J90">
+    <meta property="fb:admins" content="100001352546622">
+    <meta property="og:image" content="http://st.codeforces.com/s/61735/images/codeforces-telegram-square.png">
+    <link rel="image_src" href="http://st.codeforces.com/s/61735/images/codeforces-telegram-square.png">
+    <meta property="og:title" content="A little bit of classics: dynamic programming over subsets and paths in graphs - Codeforces">
+    <meta property="og:description" content="">
+    
+    <meta property="og:site_name" content="Codeforces">
+    
+    
+    
+    
+    
+    <meta name="utc_offset" content="+03:00">
+    <meta name="verify-reformal" content="f56f99fd7e087fb6ccb48ef2">
+    <title>A little bit of classics: dynamic programming over subsets and paths in graphs - Codeforces</title>
+        <meta name="description" content="Codeforces. Programming competitions and contests, programming community">
+        <meta name="keywords" content="programming algorithm contest competition informatics olympiads c++ java graphs vkcup">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/font-awesome.min.css" type="text/css" charset="utf-8">
+
+        <link href="./bitmask+dp 2- Codeforces_files/css" rel="stylesheet" type="text/css">
+        <link href="./bitmask+dp 2- Codeforces_files/css(1)" rel="stylesheet" type="text/css">
+
+
+    <link rel="shortcut icon" type="image/png" href="http://st.codeforces.com/s/61735/favicon.png">
+
+    <!--CombineResourcesFilter-->
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/prettify.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/clear.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/style.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/ttypography.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/problem-statement.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/second-level-menu.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/roundbox.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/datatable.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/table-form.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/topic.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/jquery.jgrowl.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/facebox.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/jquery.wysiwyg.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/jquery.autocomplete.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/codeforces.datepick.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/colorbox.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/jquery.drafts.css" type="text/css" charset="utf-8">
+        <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/community.css" type="text/css" charset="utf-8">
+
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/prettify.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/moment.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/pushstream.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.lavalamp.min.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.jgrowl.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.swipe.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/facebox.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.wysiwyg.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/wysiwyg.colorpicker.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/wysiwyg.table.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/wysiwyg.image.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/wysiwyg.link.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.datepick.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.ie6blocker.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.colorbox-min.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.ba-bbq.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.drafts.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/sjcl.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/codeforces-options.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/codeforces.js"></script>
+    <!--/CombineResourcesFilter-->
+
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/style(1).css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="./bitmask+dp 2- Codeforces_files/style(2).css" type="text/css" charset="utf-8">
+
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/share.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/jquery.markitup.js"></script>
+    <script type="text/javascript" src="./bitmask+dp 2- Codeforces_files/set.js"></script>
+
+    <!--[if IE]>
+    <style>
+        #sidebar {
+            padding-left: 1em;
+            margin: 1em 1em 1em 0;
+        }
+    </style>
+    <![endif]-->
+
+
+<style type="text/css" id="ya_share_style">.b-share-popup-wrap{z-index:1073741823;position:absolute;width:500px}.b-share-popup{position:absolute;z-index:1073741823;border:1px solid #888;background:#FFF;color:#000}.b-share-popup-wrap .b-share-popup_down{top:0}.b-share-popup-wrap .b-share-popup_up{bottom:0}.b-share-popup-wrap_state_hidden{position:absolute!important;top:-9999px!important;right:auto!important;bottom:auto!important;left:-9999px!important;visibility:hidden!important}.b-share-popup,x:nth-child(1){border:0;padding:1px!important}@media all and (resolution=0){.b-share-popup,x:nth-child(1),x:-o-prefocus{padding:0!important;border:1px solid #888}}.b-share-popup__i{display:-moz-inline-box;display:inline-block;padding:5px 0!important;overflow:hidden;vertical-align:top;white-space:nowrap;visibility:visible;background:#FFF;-webkit-box-shadow:0 2px 9px rgba(0,0,0,.6);-moz-box-shadow:0 2px 9px rgba(0,0,0,.6);box-shadow:0 2px 9px rgba(0,0,0,.6)}.b-share-popup__item{font:1em/1.25em Arial,sans-serif;display:block;padding:5px 15px!important;white-space:nowrap;background:#FFF}.b-share-popup__item,a.b-share-popup__item:link,a.b-share-popup__item:visited{text-decoration:none!important;border:0!important}a.b-share-popup__item{cursor:pointer}a.b-share-popup__item .b-share-popup__item__text{display:inline;text-decoration:underline;color:#1A3DC1}a.b-share-popup__item:hover{word-spacing:0}a.b-share-popup__item:hover .b-share-popup__item__text{color:red;cursor:pointer}.b-share-popup__icon{display:-moz-inline-box;display:inline-block;margin:-3px 0 0;padding:0 5px 0 0!important;vertical-align:middle}.b-share-popup__icon_input{width:21px;height:16px;margin-top:-6px;padding:0!important}.b-share-popup__icon__input{margin-right:0;margin-left:2px;vertical-align:top}.b-share-popup__spacer{display:block;padding-top:10px!important}.b-share-popup__header{font:86%/1em Verdana,sans-serif;display:block;padding:10px 15px 5px!important;color:#999}.b-share-popup__header_first{padding-top:5px!important}.b-share-popup__input{font:86%/1em Verdana,sans-serif;display:block;padding:5px 15px!important;color:#999;text-align:left}.b-share-popup__input__input{font:1em/1em Verdana,sans-serif;display:block;width:10px;margin:5px 0 0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;resize:none;text-align:left;direction:ltr}.b-share-popup_down .b-share-popup_with-link .b-share-popup__input_link{position:absolute;top:5px;right:0;left:0}.b-share-popup_up .b-share-popup_with-link .b-share-popup__input_link{position:absolute;right:0;bottom:5px;left:0}.b-share-popup_down .b-share-popup_with-link{padding-top:55px!important}.b-share-popup_up .b-share-popup_with-link{padding-bottom:55px!important}.b-share-popup_down .b-share-popup_expandable .b-share-popup__main{padding-bottom:25px!important}.b-share-popup_up .b-share-popup_expandable .b-share-popup__main{padding-top:25px!important}.b-share-popup_down .b-share-popup_yandexed{padding-bottom:10px!important}.b-share-popup_up .b-share-popup_yandexed{padding-top:10px!important}.b-share-popup__yandex{position:absolute;right:4px;bottom:2px;font:78.125%/1em Verdana,sans-serif;padding:3px!important;background:0 0}a.b-share-popup__yandex:link,a.b-share-popup__yandex:visited{color:#C6C5C5;text-decoration:none}a.b-share-popup__yandex:link:hover,a.b-share-popup__yandex:visited:hover{color:red;text-decoration:underline}.b-share-popup_up .b-share-popup__yandex{top:2px;bottom:auto}.b-share-popup_expandable .b-share-popup__yandex{right:auto;left:4px}.b-share-popup_to-right .b-share-popup_expandable .b-share-popup__yandex{right:4px;left:auto}.b-share-popup__expander .b-share-popup__item{position:absolute;bottom:5px;font:86%/1em Verdana,sans-serif;margin:10px 0 0;padding:5px 10px!important;cursor:pointer;color:#999;background:0 0}.b-share-popup_to-right,.b-share-popup_to-right .b-share-popup__expander{direction:rtl}.b-share-popup_to-right .b-share-popup__expander .b-share-popup__icon{padding:0 0 0 5px!important}.b-share-popup_up .b-share-popup__expander .b-share-popup__item{top:-5px;bottom:auto}.b-share-popup__expander .b-share-popup__item:hover .b-share-popup__item__text{text-decoration:underline}.b-share-popup__expander .b-ico_action_rarr,.b-share-popup_to-right .b-share-popup__expander .b-ico_action_larr,.b-share-popup_full .b-share-popup__expander .b-ico_action_larr,.b-share-popup_to-right .b-share-popup_full .b-share-popup__expander .b-ico_action_rarr,.b-share-popup__expander .b-share-popup__item__text_collapse,.b-share-popup_full .b-share-popup__item__text_expand{display:none}.b-share-popup_to-right .b-share-popup__expander .b-ico_action_rarr,.b-share-popup_full .b-share-popup__item__text_collapse,.b-share-popup_full .b-share-popup__expander .b-ico_action_rarr,.b-share-popup_to-right .b-share-popup_full .b-share-popup__expander .b-ico_action_larr{display:inline}.b-ico_action_rarr,.b-ico_action_larr{width:8px;height:7px;border:0}.b-share-popup__main,.b-share-popup__extra{direction:ltr;vertical-align:bottom;text-align:left}.b-share-popup_down .b-share-popup__main,.b-share-popup_down .b-share-popup__extra{vertical-align:top}.b-share-popup__main{display:-moz-inline-stack;display:inline-block}.b-share-popup__extra{display:none;margin:0 -10px 0 0}.b-share-popup_full .b-share-popup__extra{display:-moz-inline-stack;display:inline-block}.b-share-popup_to-right .b-share-popup__extra{margin:0 0 0 -10px}.b-share-popup__tail{position:absolute;width:21px;height:10px;margin:0 0 0 -11px}.b-share-popup_down .b-share-popup__tail{top:-10px;background:url("//yastatic.net/share/static/b-share-popup_down__tail.gif") 0 0 no-repeat}.b-share-popup_up .b-share-popup__tail{bottom:-10px;background:url("//yastatic.net/share/static/b-share-popup_up__tail.gif") 0 0 no-repeat}.b-share-popup_down .b-share-popup__tail,x:nth-child(1){top:-9px;background-image:url("//yastatic.net/share/static/b-share-popup_down__tail.png")}.b-share-popup_up .b-share-popup__tail,x:nth-child(1){bottom:-9px;background-image:url("//yastatic.net/share/static/b-share-popup_up__tail.png")}@media all and (resolution=0){.b-share-popup_down .b-share-popup__tail,x:nth-child(1),x:-o-prefocus{top:-10px;background-image:url("//yastatic.net/share/static/b-share-popup_down__tail.gif")}.b-share-popup_up .b-share-popup__tail,x:nth-child(1),x:-o-prefocus{bottom:-10px;background-image:url("//yastatic.net/share/static/b-share-popup_up__tail.gif")}}.b-share-popup .b-share-popup_show_form_mail,.b-share-popup .b-share-popup_show_form_html{padding:0!important}.b-share-popup .b-share-popup_show_form_mail .b-share-popup__main,.b-share-popup .b-share-popup_show_form_html .b-share-popup__main,.b-share-popup .b-share-popup_show_form .b-share-popup__main,.b-share-popup .b-share-popup_show_form_mail .b-share-popup__extra,.b-share-popup .b-share-popup_show_form_html .b-share-popup__extra,.b-share-popup .b-share-popup_show_form .b-share-popup__extra{height:15px;padding:0!important;overflow:hidden;visibility:hidden}.b-share-popup_show_form_mail .b-share-popup__expander,.b-share-popup_show_form_html .b-share-popup__expander,.b-share-popup_show_form .b-share-popup__expander,.b-share-popup_show_form_mail .b-share-popup__input_link,.b-share-popup_show_form_html .b-share-popup__input_link,.b-share-popup_show_form .b-share-popup__input_link{display:none}.b-share-popup__form{position:relative;display:none;overflow:hidden;padding:5px 0 0!important;margin:0 0 -15px;white-space:normal}.b-share-popup_show_form_mail .b-share-popup__form_mail,.b-share-popup_show_form_html .b-share-popup__form_html,.b-share-popup_show_form .b-share-popup__form{display:block}.b-share-popup__form__link{padding:5px!important;margin:0 0 5px 10px;text-decoration:underline;cursor:pointer;color:#1A3DC1}.b-share-popup__form__link,.b-share-popup__form__button{font:86%/1.4545em Verdana,sans-serif;float:left;display:inline}.b-share-popup__form__button{margin:5px 0 0 15px}.b-share-popup__form__close{font:86%/1.4545em Verdana,sans-serif;float:right;display:inline;padding:5px!important;margin:0 10px 5px 0;cursor:pointer;color:#999}a.b-share-popup__form__link:hover,a.b-share-popup__form__close:hover{text-decoration:underline;color:red}.b-share-popup_font_fixed .b-share-popup__item{font-size:12.8px}.b-share-popup_font_fixed .b-share-popup__header,.b-share-popup_font_fixed .b-share-popup__input,.b-share-popup_font_fixed .b-share-popup__expander .b-share-popup__item,.b-share-popup_font_fixed .b-share-popup__form__link,.b-share-popup_font_fixed .b-share-popup__form__button,.b-share-popup_font_fixed .b-share-popup__form__close{font-size:11px}.b-share-popup_font_fixed .b-share-popup__yandex{font-size:10px}.b-share-form-button{font:86%/17px Verdana,Arial,sans-serif;display:-moz-inline-box;display:inline-block;position:relative;height:19px;margin:0 3px;padding:0 4px;cursor:default;white-space:nowrap;text-decoration:none!important;color:#000!important;border:none;outline:none;background:url("//yastatic.net/share/static/b-share-form-button.png") 0 -20px repeat-x}.b-share-form-button:link:hover,.b-share-form-button:visited:hover{color:#000!important}.b-share-form-button__before,.b-share-form-button__after{position:absolute;width:3px;height:19px;background:url("//yastatic.net/share/static/b-share-form-button.png")}.b-share-form-button__before{margin-left:-7px}.b-share-form-button__after{margin-left:4px;background-position:-3px 0}.b-share-form-button::-moz-focus-inner{border:none}button.b-share-form-button .b-share-form-button__before,button.b-share-form-button .b-share-form-button__after{margin-top:-1px}@-moz-document url-prefix(){button.b-share-form-button .b-share-form-button__after{margin-top:-2px;margin-left:6px}button.b-share-form-button .b-share-form-button__before{margin-top:-2px;margin-left:-9px}}SPAN.b-share-form-button:hover,.b-share-form-button_state_hover{background-position:0 -60px}SPAN.b-share-form-button:hover .b-share-form-button__before,.b-share-form-button_state_hover .b-share-form-button__before{background-position:0 -40px}SPAN.b-share-form-button:hover .b-share-form-button__after,.b-share-form-button_state_hover .b-share-form-button__after{background-position:-3px -40px}.b-share-form-button_state_pressed,.b-share-form-button_state_pressed .b-share-form-button_share{background-position:0 -100px!important}.b-share-form-button_state_pressed .b-share-form-button__before{background-position:0 -80px!important}.b-share-form-button_state_pressed .b-share-form-button__after{background-position:-3px -80px!important}button.b-share-form-button_state_pressed{overflow:visible}.b-share-form-button_icons{position:relative;padding:0;background-position:0 -20px!important}.b-share-form-button_icons .b-share-form-button__before{left:0;margin-left:-3px;background-position:0 0!important}.b-share-form-button_icons .b-share-form-button__after{z-index:-1;margin-left:0;background-position:-3px 0!important}.b-share-form-button_icons .b-share__handle{padding:2px!important}.b-share-form-button_icons .b-share__handle_more{position:relative;padding-right:6px!important;margin-right:-4px}.b-share-form-button_icons .b-share-icon{opacity:.5;background-image:url("//yastatic.net/share/static/b-share-icon_size_14.png")}.b-share-form-button_icons A.b-share__handle:hover .b-share-icon{opacity:1}.b-share{font:86%/1.4545em Arial,sans-serif;display:-moz-inline-box;display:inline-block;padding:1px 3px 1px 4px!important;vertical-align:middle}.b-share .b-share-form-button{font-size:1em}.b-share__text .b-share-icon{margin:0 5px 0 0;border:none}.b-share__text{margin-right:5px}.b-share__handle{float:left;height:16px;padding:5px 3px 5px 2px!important;cursor:pointer;text-align:left;text-decoration:none!important}.b-share__handle_cursor_default{cursor:default}.b-share__handle .b-share-form-button{margin-top:-2px}.b-share__hr{display:none;float:left;width:1px;height:26px;margin:0 3px 0 2px}a.b-share__handle:hover .b-share__text{text-decoration:underline;color:red}.b-share_bordered{padding:0 2px 0 3px!important;border:1px solid #E4E4E4;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.b-share_bordered .b-share__hr{display:inline;background:#E4E4E4}.b-share_link{margin:-8px 0}a.b-share_link{margin:0}.b-share_link .b-share__text{text-decoration:underline;color:#1A3DC1}.b-share-form-button_share{padding-left:26px!important;vertical-align:top}.b-share-form-button_share .b-share-form-button__before{margin-left:-29px}.b-share-form-button_share .b-share-form-button__icon{position:absolute;width:20px;height:17px;margin:1px 0 0 -23px;background:url("//yastatic.net/share/static/b-share-form-button_share__icon.png") 0 0 no-repeat}.b-share-pseudo-link{border-bottom:1px dotted;cursor:pointer;text-decoration:none!important}.b-share_font_fixed{font-size:11px}.b-share__handle_more{font-size:9px;margin-top:-1px;color:#7B7B7B}A.b-share__handle_more:hover{color:#000}.b-share__group{float:left}.b-share-icon{float:left;display:inline;overflow:hidden;width:16px;height:16px;padding:0!important;vertical-align:top;border:0;background:url("//yastatic.net/share/static/b-share-icon.png") 0 99px no-repeat}.b-share-icon_vkontakte,.b-share-icon_custom{background-position:0 0}.b-share-icon_yaru,.b-share-icon_yaru_photo,.b-share-icon_yaru_wishlist{background-position:0 -17px}.b-share-icon_lj{background-position:0 -34px}.b-share-icon_twitter{background-position:0 -51px}.b-share-icon_facebook{background-position:0 -68px}.b-share-icon_moimir{background-position:0 -85px}.b-share-icon_friendfeed{background-position:0 -102px}.b-share-icon_mail{background-position:0 -119px}.b-share-icon_html{background-position:0 -136px}.b-share-icon_postcard{background-position:0 -153px}.b-share-icon_odnoklassniki{background-position:0 -170px}.b-share-icon_blogger{background-position:0 -187px}.b-share-icon_delicious{background-position:0 -221px}.b-share-icon_gbuzz{background-position:0 -238px}.b-share-icon_linkedin{background-position:0 -255px}.b-share-icon_myspace{background-position:0 -272px}.b-share-icon_evernote{background-position:0 -289px}.b-share-icon_digg{background-position:0 -306px}.b-share-icon_juick{background-position:0 -324px}.b-share-icon_moikrug{background-position:0 -341px}.b-share-icon_yazakladki{background-position:0 -358px}.b-share-icon_liveinternet{background-position:0 -375px}.b-share-icon_tutby{background-position:0 -392px}.b-share-icon_diary{background-position:0 -409px}.b-share-icon_gplus{background-position:0 -426px}.b-share-icon_pocket{background-position:0 -443px}.b-share-icon_surfingbird{background-position:0 -460px}.b-share-icon_pinterest{background-position:0 -477px}.b-share-icon_renren{background-position:0 0}.b-share-icon_renren,.b-share-icon_sina_weibo{background:url("//yastatic.net/share/static/b-share-icon__china.png") no-repeat}.b-share-icon_sina_weibo{background-position:-18px 0}.b-share-icon_qzone{background-position:-36px 0}.b-share-icon_qzone,.b-share-icon_tencent_weibo{background:url("//yastatic.net/share/static/b-share-icon__china.png") no-repeat}.b-share-icon_tencent_weibo{background-position:-54px 0}.b-share_theme_dark .b-share-icon{background:url("//yastatic.net/share/static/b-share-icons__theme_dark.png") 99px 0 no-repeat}.b-share_theme_dark .b-share-icon_odnoklassniki{background-position:-4px -3px}.b-share_theme_dark .b-share-icon_vkontakte{background-position:-24px -3px}.b-share_theme_dark .b-share-icon_twitter{background-position:-44px -3px}.b-share_theme_dark .b-share-icon_facebook{background-position:-64px -3px}.b-share_theme_dark .b-share-icon_lj{background-position:-85px -3px}.b-share_theme_dark .b-share-icon_yaru{background-position:-105px -3px}.b-share_theme_dark .b-share-popup .b-share-icon_odnoklassniki,.b-share_theme_dark .b-share-icon_odnoklassniki:hover{background-position:-4px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_vkontakte,.b-share_theme_dark .b-share-icon_vkontakte:hover{background-position:-24px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_twitter,.b-share_theme_dark .b-share-icon_twitter:hover{background-position:-44px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_facebook,.b-share_theme_dark .b-share-icon_facebook:hover{background-position:-64px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_lj,.b-share_theme_dark .b-share-icon_lj:hover{background-position:-85px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_yaru,.b-share_theme_dark .b-share-icon_yaru:hover{background-position:-105px -28px}.b-share_theme_dark .b-share-form-button_share .b-share-form-button__icon{background-image:url("//yastatic.net/share/static/b-share-form-button_share__icon_dark.png")}.b-share_theme_dark .b-share-form-button{color:#fff!important;opacity:.8}.b-share_theme_dark .b-share__handle:hover .b-share-form-button,.b-share_theme_dark .b-share-form-button:hover{opacity:1;cursor:pointer}.b-share_theme_dark .b-share-form-button,.b-share_theme_dark .b-share-form-button__before,.b-share_theme_dark .b-share-form-button__after{background:0 0}.b-share_theme_dark .b-share-popup__i{background-color:#333;border-radius:10px;-webkit-box-shadow:0 2px 9px rgba(255,255,255,.6);-moz-box-shadow:0 2px 9px rgba(255,255,255,.6);box-shadow:0 2px 9px rgba(255,255,255,.6)}.b-share_theme_dark .b-share__text{color:#AAA}.b-share_theme_dark .b-share-popup{color:#AAA;border-radius:10px;background-color:#333;background-color:rgba(50,50,50,.3)}.b-share_theme_dark .b-share-popup__item{background:0 0;color:#ccc}.b-share_theme_dark .b-share-popup .b-share-popup__item__text{color:#ccc}.b-share_theme_counter .b-share{display:inline-block;vertical-align:middle;white-space:nowrap}.b-share-counter{font:14px Arial,sans-serif;line-height:18px;display:none;float:left;margin:3px 6px 3px 3px;color:#fff}.b-share_theme_counter .b-share_type_small .b-share-counter{font-size:11px;line-height:14px;margin:2px 6px 2px 1px}.b-share_theme_counter .b-share-btn__counter .b-share-counter{display:block}.b-share-btn__counter{text-decoration:none}.b-share_theme_counter .b-share-btn__wrap{position:relative;float:left;margin-left:5px}.b-share_theme_counter .b-share_type_small .b-share-btn__wrap{margin-left:4px}.b-share_theme_counter .b-share-btn__wrap:first-child{margin-left:0}.b-share_theme_counter .b-share__link{display:inline-block;cursor:pointer;-webkit-border-radius:3px;border-radius:3px}.b-share_theme_counter .b-share_type_small .b-share__link{-webkit-border-radius:2px;border-radius:2px}.b-share_theme_counter .b-share-icon{display:block;float:left;width:24px;height:24px;background-image:url("//yastatic.net/share/static/b-share_counter_large.png");background-position:-20px 0}.b-share_theme_counter .b-share_type_small .b-share-icon{width:18px;height:18px;background-image:url("//yastatic.net/share/static/b-share_counter_small.png")}.b-share_theme_counter .b-share-icon_facebook{background-position:0 0}.b-share_theme_counter .b-share-btn__facebook{background-color:#3c5a98}.b-share_theme_counter .b-share-btn__facebook:hover{background-color:#30487a}.b-share_theme_counter .b-share-btn__facebook:active{border-top:2px solid #24365a;background-color:#334d81}.b-share_theme_counter .b-share-icon_moimir{background-position:0 -29px}.b-share_theme_counter .b-share-btn__moimir{background-color:#226eb7}.b-share_theme_counter .b-share-btn__moimir:hover{background-color:#1b5892}.b-share_theme_counter .b-share-btn__moimir:active{border-top:2px solid #14426d;background-color:#1d5e9c}.b-share_theme_counter .b-share-icon_vkontakte{background-position:0 -58px}.b-share_theme_counter .b-share-btn__vkontakte{background-color:#48729e}.b-share_theme_counter .b-share-btn__vkontakte:hover{background-color:#3a5b7e}.b-share_theme_counter .b-share-btn__vkontakte:active{border-top:2px solid #2b445e;background-color:#3d6186}.b-share_theme_counter .b-share-icon_twitter{background-position:0 -87px}.b-share_theme_counter .b-share-btn__twitter{background-color:#00aced}.b-share_theme_counter .b-share-btn__twitter:hover{background-color:#008abe}.b-share_theme_counter .b-share-btn__twitter:active{border-top:2px solid #00668d;background-color:#0092ca}.b-share_theme_counter .b-share-icon_odnoklassniki{background-position:0 -116px}.b-share_theme_counter .b-share-btn__odnoklassniki{background-color:#ff9f4d}.b-share_theme_counter .b-share-btn__odnoklassniki:hover{background-color:#cc7f3e}.b-share_theme_counter .b-share-btn__odnoklassniki:active{border-top:2px solid #975e2e;background-color:#d98742}.b-share_theme_counter .b-share-icon_gplus{background-position:0 -145px}.b-share_theme_counter .b-share-btn__gplus{background-color:#c25234}.b-share_theme_counter .b-share-btn__gplus:hover{background-color:#9b422a}.b-share_theme_counter .b-share-btn__gplus:active{border-top:2px solid #73311f;background-color:#a5462c}.b-share_theme_counter .b-share-icon_yaru{background-position:0 -174px}.b-share_theme_counter .b-share-btn__yaru{background-color:#d83933}.b-share_theme_counter .b-share-btn__yaru:hover{background-color:#ad2e29}.b-share_theme_counter .b-share-btn__yaru:active{border-top:2px solid #80221e;background-color:#b8312b}.b-share_theme_counter .b-share-icon_pinterest{background-position:0 -203px}.b-share_theme_counter .b-share-btn__pinterest{background-color:#cd1e27}.b-share_theme_counter .b-share-btn__pinterest:hover{background-color:#a4181f}.b-share_theme_counter .b-share-btn__pinterest:active{border-top:2px solid #7b1217;background-color:#ae1921}.b-share_theme_counter .b-share__link:active{height:22px}.b-share_theme_counter .b-share_type_small .b-share__link:active{height:16px}.b-share_theme_counter .b-share__link:active .b-share-icon,.b-share_theme_counter .b-share__link:active .b-share-counter{position:relative;top:-1px}.b-share_theme_counter .b-share__link::after{position:absolute;top:0;right:0;bottom:0;left:0;content:"";background-image:url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==)}.b-share_theme_counter .b-share__handle{height:auto;padding:0!important}</style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+<body><span style="display:none;" class="csrf-token" data-csrf="b77e1b6a0ee74745c176b4f82a35ae62">&nbsp;</span>
+<div class="button-up" style="display: none; opacity: 0.7; width: 30px; height: 100%; position: fixed; left: 0px; top: 0px; cursor: pointer; text-align: center; line-height: 30px; color: rgb(211, 219, 228); font-weight: bold; font-size: 20px;"><i class="icon-circle-arrow-up"></i></div>
+
+<!-- Codeforces JavaScripts. -->
+<script type="text/javascript">
+    var queryMobile = Codeforces.queryString.mobile;
+    if (queryMobile === "true" || queryMobile === "false") {
+        Codeforces.putToStorage("useMobile", queryMobile == "true");
+    } else {
+        var useMobile = Codeforces.getFromStorage("useMobile");
+        if (useMobile === true || useMobile === false) {
+            if (useMobile != false) {
+                Codeforces.redirect(Codeforces.updateUrlParameter(document.location.href, "mobile", useMobile));
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    if (window.parent.frames.length > 0) {
+        window.stop();
+    }
+</script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+    (function () {
+        jQuery.expr[':'].containsCI = function(elem, index, match) {
+            return !match || !match.length || match.length < 4 || !match[3] || (
+                    elem.textContent || elem.innerText || jQuery(elem).text() || ''
+            ).toLowerCase().indexOf(match[3].toLowerCase()) >= 0;
+        }
+    }(jQuery));
+
+    $.ajaxPrefilter(function(options, originalOptions, xhr) {
+        var csrf = Codeforces.getCsrfToken();
+
+        if (csrf) {
+            var data = originalOptions.data;
+            if (originalOptions.data !== undefined) {
+                if (Object.prototype.toString.call(originalOptions.data) === '[object String]') {
+                    data = $.deparam(originalOptions.data);
+                }
+            } else {
+                data = {};
+            }
+            options.data = $.param($.extend(data, { csrf_token: csrf }));
+        }
+    });
+
+    window.getCodeforcesServerTime = function(callback) {
+        $.post("/data/time", {}, callback, "json");
+    }
+
+    window.updateTypography = function () {
+        $("div.ttypography code").addClass("tt");
+        $("div.ttypography pre>code").addClass("prettyprint").removeClass("tt");
+        $("div.ttypography table").addClass("bordertable");
+        prettyPrint();
+    }
+
+    $.ajaxSetup({ scriptCharset: "utf-8" ,contentType: "application/x-www-form-urlencoded; charset=UTF-8", headers: {
+        'X-Csrf-Token': Codeforces.getCsrfToken()
+    }});
+
+    window.updateTypography();
+
+    Codeforces.signForms();
+
+    setTimeout(function() {
+        $(".second-level-menu-list").lavaLamp({
+            fx: "backout",
+            speed: 1000
+        });
+    }, 0);
+
+
+    Codeforces.countdown();
+    $("a[rel='photobox']").colorbox();
+
+
+    function showAnnouncements(json) {
+        info("j=" + JSON.stringify(json));
+
+        if (json.t != "a") {
+            return;
+        }
+        console.log("Got announcement from channel");
+        setTimeout(function() {
+            Codeforces.showAnnouncements(json.d, "en");
+        }, Math.random() * 500);
+    }
+    if (Codeforces.getParticipantChannel()) {
+        Codeforces.subscribe(Codeforces.getParticipantChannel(), function(json) {
+            showAnnouncements(json);
+        });
+    }
+
+    if (Codeforces.getContestChannel()) {
+        Codeforces.subscribe(Codeforces.getContestChannel(), function(json) {
+            showAnnouncements(json);
+        });
+    }
+
+    if (Codeforces.getGlobalChannel()) {
+        Codeforces.subscribe(Codeforces.getGlobalChannel(), function(json) {
+            showAnnouncements(json);
+        });
+    }
+
+    if (Codeforces.getUserChannel()) {
+        Codeforces.subscribe(Codeforces.getUserChannel(), function(json) {
+            showAnnouncements(json);
+        });
+    }
+
+    $(".clickable-title").click(function() {
+        Codeforces.alert($(this).attr("title"));
+    }).css("position", "relative").css("bottom", "3px");
+
+
+    Codeforces.reformatTimes();
+    Codeforces.initializePubSub();
+
+    Codeforces.setupSpoilers();
+    Codeforces.setupTutorials("/data/problemTutorial");
+        });
+    </script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-743380-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function () {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = (document.location.protocol == 'https:' ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<div id="body">
+        
+<div id="header" style="position: relative;">
+    <div style="float:left;">
+            <a href="http://codeforces.com/"><img src="./bitmask+dp 2- Codeforces_files/codeforces-logo-with-telegram.png"></a>
+
+    </div>
+    <div class="lang-chooser">
+        <div style="text-align: right;">
+            <a href="http://codeforces.com/blog/entry/337?locale=en"><img src="./bitmask+dp 2- Codeforces_files/gb.png" title="In English" alt="In English"></a>
+            <a href="http://codeforces.com/blog/entry/337?locale=ru"><img src="./bitmask+dp 2- Codeforces_files/ru.png" title="По-русски" alt="По-русски"></a>
+        </div>
+        <div>
+                    <a href="http://codeforces.com/enter">Enter</a>
+                     | 
+                    <a href="http://codeforces.com/register">Register</a>
+                    
+        </div>
+
+
+
+    </div>
+    <br style="clear: both;">
+</div>
+
+
+        
+
+    <div class="roundbox menu-box" style="">
+            <div class="roundbox-lt">&nbsp;</div>
+            <div class="roundbox-rt">&nbsp;</div>
+            <div class="roundbox-lb">&nbsp;</div>
+            <div class="roundbox-rb">&nbsp;</div>
+    <div class="menu-list-container">
+    <ul class="menu-list main-menu-list">
+                <li class=""><a href="http://codeforces.com/">Home</a></li>
+                <li class=""><a href="http://codeforces.com/contests">Contests</a></li>
+                <li class=""><a href="http://codeforces.com/gyms">Gym</a></li>
+                <li class=""><a href="http://codeforces.com/problemset">Problemset</a></li>
+                <li class=""><a href="http://codeforces.com/groups">Groups</a></li>
+                <li class=""><a href="http://codeforces.com/ratings">Rating</a></li>
+                <li class=""><a href="http://codeforces.com/api/help">API</a></li>
+                <li class=""><a href="http://codeforces.com/aimtech2016">AIM Tech Round <img class="icon" src="./bitmask+dp 2- Codeforces_files/cup.png"></a></li>
+                <li class=""><a href="http://codeforces.com/vkcup2016">VK Cup <img class="icon" src="./bitmask+dp 2- Codeforces_files/cup.png"></a></li>
+                <li class=""><a href="http://codeforces.com/sections">Sections</a></li>
+    </ul>
+        <form method="post" action="http://codeforces.com/search"><input type="hidden" name="csrf_token" value="b77e1b6a0ee74745c176b4f82a35ae62">
+            <input class="search" name="query" data-isplaceholder="true" value="">
+        <input type="hidden" name="_tta" value="689"></form>
+    <br style="clear: both;">
+</div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input.search").focus(function () {
+                if ($(this).attr("data-isPlaceholder") === "true") {
+                    $(this).val("");
+                    $(this).removeAttr("data-isPlaceholder");
+                }
+            });
+        });
+    </script>
+            <br style="height: 3em; clear: both;">
+
+        <div style="position: relative;">
+                        <div id="sidebar">
+    <div class="roundbox sidebox" style="">
+            <div class="roundbox-lt">&nbsp;</div>
+            <div class="roundbox-rt">&nbsp;</div>
+        <div class="caption titled">→ Pay attention
+            <div class="top-links">
+            </div>
+        </div>
+<div style="padding: 0.5em;">
+        <div style="text-align:center;border-bottom: 1px solid rgb(185, 185, 185);margin:0 -0.5em 0.5em -0.5em;padding: 0 1em 0.5em 1em;">
+            <span class="contest-state-phase">Before contest</span><br><a href="http://codeforces.com/contests/708,709">AIM Tech Round 3 (Div. 1)</a><br><span class="countdown" home="http://st.codeforces.com/s/61735" noredirection="true" textbeforeredirect="" cdid="i1">26:27:10</span>
+        </div>
+        <div style="text-align:center;border-bottom: 1px solid rgb(185, 185, 185);margin:0 -0.5em 0.5em -0.5em;padding: 0 1em 0.5em 1em;">
+            <span class="contest-state-phase">Before contest</span><br><a href="http://codeforces.com/contests/708,709">AIM Tech Round 3 (Div. 2)</a><br><span class="countdown" home="http://st.codeforces.com/s/61735" noredirection="true" textbeforeredirect="" cdid="i2">26:27:10</span>
+        </div>
+        <div style="text-align:center;">
+            <div class="socials" style="text-align: left;">
+                <div style="margin-top: 0.85em;position: relative;">
+
+        <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./bitmask+dp 2- Codeforces_files/LJ9CfGDsgQ7.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./bitmask+dp 2- Codeforces_files/LJ9CfGDsgQ7(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+        <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "http://connect.facebook.net/en_EN/all.js#appId=554666954583323&xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <div class="fb-like fb_iframe_widget" data-href="http://codeforces.com/contests/708,709" data-send="false" data-width="256" data-show-faces="false" data-font="arial" data-ref="1299623469" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=554666954583323&amp;container_width=265&amp;font=arial&amp;href=http%3A%2F%2Fcodeforces.com%2Fcontests%2F708%2C709&amp;locale=en_US&amp;ref=1299623469&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=256"><span style="vertical-align: bottom; width: 256px; height: 20px;"><iframe name="f22bc8e8bc4634" width="256px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./bitmask+dp 2- Codeforces_files/like.html" style="border: none; visibility: visible; width: 256px; height: 20px;" class=""></iframe></span></div>
+
+        </div>
+</div>
+
+        </div>
+</div>
+    </div>
+
+<div class="roundbox sidebox top-contributed" style="">
+<div class="roundbox-lt">&nbsp;</div>
+<div class="roundbox-rt">&nbsp;</div>
+<div class="caption titled">→ Top rated
+<div class="top-links">
+</div>
+</div>
+<table class="rtable ">
+<tbody>
+<tr>
+<th class="left" style="width:2.25em;">#</th>
+<th class="">User</th>
+<th class="" style="width:5em;">Rating</th>
+</tr>
+<tr>
+<td class="left dark">1</td>
+<td class=" dark"><a href="http://codeforces.com/profile/tourist" title="Legendary grandmaster tourist" class="rated-user user-legendary"><span class="legendary-user-first-letter">t</span>ourist</a></td>
+<td class=" dark">3580</td>
+</tr>
+<tr>
+<td class="left ">2</td>
+<td class=""><a href="http://codeforces.com/profile/Petr" title="Legendary grandmaster Petr" class="rated-user user-legendary"><span class="legendary-user-first-letter">P</span>etr</a></td>
+<td class="">3481</td>
+</tr>
+<tr>
+<td class="left dark">3</td>
+<td class=" dark"><a href="http://codeforces.com/profile/TooDifficuIt" title="Legendary grandmaster TooDifficuIt" class="rated-user user-legendary"><span class="legendary-user-first-letter">T</span>ooDifficuIt</a></td>
+<td class=" dark">3416</td>
+</tr>
+<tr>
+<td class="left ">4</td>
+<td class=""><a href="http://codeforces.com/profile/rng_58" title="Legendary grandmaster rng_58" class="rated-user user-legendary"><span class="legendary-user-first-letter">r</span>ng_58</a></td>
+<td class="">3102</td>
+</tr>
+<tr>
+<td class="left dark">5</td>
+<td class=" dark"><a href="http://codeforces.com/profile/ainta" title="Legendary grandmaster ainta" class="rated-user user-legendary"><span class="legendary-user-first-letter">a</span>inta</a></td>
+<td class=" dark">3048</td>
+</tr>
+<tr>
+<td class="left ">6</td>
+<td class=""><a href="http://codeforces.com/profile/jcvb" title="Legendary grandmaster jcvb" class="rated-user user-legendary"><span class="legendary-user-first-letter">j</span>cvb</a></td>
+<td class="">2999</td>
+</tr>
+<tr>
+<td class="left dark">7</td>
+<td class=" dark"><a href="http://codeforces.com/profile/vepifanov" title="Legendary grandmaster vepifanov" class="rated-user user-legendary"><span class="legendary-user-first-letter">v</span>epifanov</a></td>
+<td class=" dark">2992</td>
+</tr>
+<tr>
+<td class="left ">8</td>
+<td class=""><a href="http://codeforces.com/profile/dotorya" title="Legendary grandmaster dotorya" class="rated-user user-legendary"><span class="legendary-user-first-letter">d</span>otorya</a></td>
+<td class="">2970</td>
+</tr>
+<tr>
+<td class="left dark">9</td>
+<td class=" dark"><a href="http://codeforces.com/profile/subscriber" title="Legendary grandmaster subscriber" class="rated-user user-legendary"><span class="legendary-user-first-letter">s</span>ubscriber</a></td>
+<td class=" dark">2968</td>
+</tr>
+<tr>
+<td class="left bottom">10</td>
+<td class="bottom"><a href="http://codeforces.com/profile/W4yneb0t" title="Legendary grandmaster W4yneb0t" class="rated-user user-legendary"><span class="legendary-user-first-letter">W</span>4yneb0t</a></td>
+<td class="bottom">2961</td>
+</tr>
+</tbody>
+</table>
+<div class="bottom-links">
+<table style="width:100%;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="http://codeforces.com/ratings/countries">Countries</a> |
+<a href="http://codeforces.com/ratings/cities">Cities</a> |
+<a href="http://codeforces.com/ratings/organizations">Organizations</a>
+</td>
+<td style="text-align:right;">
+<a href="http://codeforces.com/ratings">View all →</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    <div class="roundbox sidebox top-contributed" style="">
+            <div class="roundbox-lt">&nbsp;</div>
+            <div class="roundbox-rt">&nbsp;</div>
+        <div class="caption titled">→ Top contributors
+            <div class="top-links">
+            </div>
+        </div>
+        <table class="rtable ">
+            <tbody>
+                <tr>
+                            <th class="left" style="width:2.25em;">#</th>
+                            <th class="">User</th>
+                            <th class="" style="width:5em;">Contrib.</th>
+                </tr>
+                    <tr>
+                                <td class="left  dark">1</td>
+                                <td class=" dark"><a href="http://codeforces.com/profile/Errichto" title="International Grandmaster Errichto" class="rated-user user-red">Errichto</a></td>
+                                <td class=" dark">176</td>
+                    </tr>
+                    <tr>
+                                <td class="left ">2</td>
+                                <td class=""><a href="http://codeforces.com/profile/gKseni" title="Pupil gKseni" class="rated-user user-green">gKseni</a></td>
+                                <td class="">175</td>
+                    </tr>
+                    <tr>
+                                <td class="left  dark">3</td>
+                                <td class=" dark"><a href="http://codeforces.com/profile/Petr" title="Legendary grandmaster Petr" class="rated-user user-legendary"><span class="legendary-user-first-letter">P</span>etr</a></td>
+                                <td class=" dark">168</td>
+                    </tr>
+                    <tr>
+                                <td class="left ">4</td>
+                                <td class=""><a href="http://codeforces.com/profile/Zlobober" title="International Grandmaster Zlobober" class="rated-user user-red">Zlobober</a></td>
+                                <td class="">163</td>
+                    </tr>
+                    <tr>
+                                <td class="left  dark">5</td>
+                                <td class=" dark"><a href="http://codeforces.com/profile/Edvard" title="Master Edvard" class="rated-user user-orange">Edvard</a></td>
+                                <td class=" dark">158</td>
+                    </tr>
+                    <tr>
+                                <td class="left ">6</td>
+                                <td class=""><a href="http://codeforces.com/profile/Swistakk" title="International Grandmaster Swistakk" class="rated-user user-red">Swistakk</a></td>
+                                <td class="">157</td>
+                    </tr>
+                    <tr>
+                                <td class="left  dark">7</td>
+                                <td class=" dark"><a href="http://codeforces.com/profile/rng_58" title="Legendary grandmaster rng_58" class="rated-user user-legendary"><span class="legendary-user-first-letter">r</span>ng_58</a></td>
+                                <td class=" dark">154</td>
+                    </tr>
+                    <tr>
+                                <td class="left ">8</td>
+                                <td class=""><a href="http://codeforces.com/profile/csacademy" title="Unrated, csacademy" class="rated-user user-black">csacademy</a></td>
+                                <td class="">148</td>
+                    </tr>
+                    <tr>
+                                <td class="left  dark">9</td>
+                                <td class=" dark"><a href="http://codeforces.com/profile/chrome" title="Expert chrome" class="rated-user user-blue">chrome</a></td>
+                                <td class=" dark">146</td>
+                    </tr>
+                    <tr>
+                                <td class="left bottom">10</td>
+                                <td class="bottom"><a href="http://codeforces.com/profile/Xellos" title="International Grandmaster Xellos" class="rated-user user-red">Xellos</a></td>
+                                <td class="bottom">145</td>
+                    </tr>
+            </tbody>
+        </table>
+            <div class="bottom-links">
+                <table style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td style="text-align:left;">
+                            </td>
+                            <td style="text-align:right;">
+                                    <a href="http://codeforces.com/top-contributed">View all →</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+
+
+
+    <div class="roundbox sidebox" style="">
+            <div class="roundbox-lt">&nbsp;</div>
+            <div class="roundbox-rt">&nbsp;</div>
+        <div class="caption titled">→ Find user
+            <div class="top-links">
+            </div>
+        </div>
+        <form class="handleForm" method="post" autocomplete="off"><input type="hidden" name="csrf_token" value="b77e1b6a0ee74745c176b4f82a35ae62">
+            <div style="padding:1em;text-align:right;">
+                <label style="padding-right:1em;">Handle:
+                    <input style="width:12em;" type="text" class="handleBox ac_input" autocomplete="off">
+                </label>
+            </div>
+            <div style="padding: 0 1em 1em 1em;text-align:right;">
+                <input style="height:1.65em;padding:0 0.75em;" type="submit" value="Find">
+            </div>
+        <input type="hidden" name="_tta" value="689"></form>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+    $(".handleBox").autocomplete("/data/handles", {
+        delay: 200,
+        width: 200,
+        selectFirst: false,
+        matchContains: true,
+        minChars: 3
+    });
+    $(".handleForm").attr("autocomplete", "off").submit(function () {
+        var link = "/profile/userHandle".replace(
+            "userHandle", $(this).find(".handleBox").val()
+        );
+        window.location = link;
+        return false;
+    });
+        });
+    </script>
+
+
+
+
+    <div class="roundbox sidebox" style="">
+            <div class="roundbox-lt">&nbsp;</div>
+            <div class="roundbox-rt">&nbsp;</div>
+        <div class="caption titled">→ Recent actions
+            <div class="top-links">
+            </div>
+        </div>
+        <div class="recent-actions">
+            <ul>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/zeliboba" title="Grandmaster zeliboba" class="rated-user user-red">zeliboba</a>        →
+        <a href="http://codeforces.com/blog/entry/46720">AIM Tech Round 3</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/NBAH" title="Expert NBAH" class="rated-user user-blue">NBAH</a>        →
+        <a href="http://codeforces.com/blog/entry/46510">Codeforces Round #367 (Editorial)</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/skmonir" title="Pupil skmonir" class="rated-user user-green">skmonir</a>        →
+        <a href="http://codeforces.com/blog/entry/46738">Please help me with this suffix array code.</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/Edvard" title="Master Edvard" class="rated-user user-orange">Edvard</a>        →
+        <a href="http://codeforces.com/blog/entry/46701">Educational Codeforces Round 16</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/r3gz3n" title="Expert r3gz3n" class="rated-user user-blue">r3gz3n</a>        →
+        <a href="http://codeforces.com/blog/entry/46714">Invitation to HackerEarth Collegiate Cup</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/Egor" title="Legendary grandmaster Egor" class="rated-user user-legendary"><span class="legendary-user-first-letter">E</span>gor</a>        →
+        <a href="http://codeforces.com/blog/entry/18974">CHelper 4.1</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/zloyplace35" title="Candidate Master zloyplace35" class="rated-user user-violet">zloyplace35</a>        →
+        <a href="http://codeforces.com/blog/entry/46662">Codeforces Round #368 (Div.2) разбор</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/Hikari9" title="Candidate Master Hikari9" class="rated-user user-violet">Hikari9</a>        →
+        <a href="http://codeforces.com/blog/entry/22175">Easy geometry using std::complex</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/Noobgam" title="Candidate Master Noobgam" class="rated-user user-violet">Noobgam</a>        →
+        <a href="http://codeforces.com/blog/entry/46715">How does memory manager work?</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/Ahmad_Kandil" title="Specialist Ahmad_Kandil" class="rated-user user-cyan">Ahmad_Kandil</a>        →
+        <a href="http://codeforces.com/blog/entry/46731">{sum+=i++} to Reach N</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/arrrhh" title="Newbie arrrhh" class="rated-user user-gray">arrrhh</a>        →
+        <a href="http://codeforces.com/blog/entry/46739">Doubt in DP problem Dima and Salad (CF 366C)</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/darkshadows" title="Candidate Master darkshadows" class="rated-user user-violet">darkshadows</a>        →
+        <a href="http://codeforces.com/blog/entry/46605">101 Hack 40 — HackerRank</a>
+&nbsp;&nbsp;<img alt="Text created or updated" title="Text created or updated" src="./bitmask+dp 2- Codeforces_files/x-update-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/praran26" title="Candidate Master praran26" class="rated-user user-violet">praran26</a>        →
+        <a href="http://codeforces.com/blog/entry/46713">Codechef August Cook Off 2016 — Math Hatter bug</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/csacademy" title="Unrated, csacademy" class="rated-user user-black">csacademy</a>        →
+        <a href="http://codeforces.com/blog/entry/46706">Round #11 Contest with prizes</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/hermoine13" title="Pupil hermoine13" class="rated-user user-green">hermoine13</a>        →
+        <a href="http://codeforces.com/blog/entry/46736">WA in 580C</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/FamIsProud" title="Specialist FamIsProud" class="rated-user user-cyan">FamIsProud</a>        →
+        <a href="http://codeforces.com/blog/entry/46247">A problem not related to competitive coding</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/FamIsProud" title="Specialist FamIsProud" class="rated-user user-cyan">FamIsProud</a>        →
+        <a href="http://codeforces.com/blog/entry/21992">Does meditation really help in focussing and concentrating? </a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/I_am_SB" title="Expert I_am_SB" class="rated-user user-blue">I_am_SB</a>        →
+        <a href="http://codeforces.com/blog/entry/46681">A simple way to solve Round368 Div.2 Problem C</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/vasanthaganesh" title="Pupil vasanthaganesh" class="rated-user user-green">vasanthaganesh</a>        →
+        <a href="http://codeforces.com/blog/entry/46735">Please help, Runtine error on 20077987 for 710A - King Moves (Submission in Haskell)</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/zloyplace35" title="Candidate Master zloyplace35" class="rated-user user-violet">zloyplace35</a>        →
+        <a href="http://codeforces.com/blog/entry/46641">Codeforces Round #368 (Div.2)</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/Ehsan_sShuvo" title="Pupil Ehsan_sShuvo" class="rated-user user-green">Ehsan_sShuvo</a>        →
+        <a href="http://codeforces.com/blog/entry/46719">Need Help for an easiest problem on DSU </a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/orb" title="Specialist orb" class="rated-user user-cyan">orb</a>        →
+        <a href="http://codeforces.com/blog/entry/46734">Possible bug on Codeforces' Golang compiler?</a>
+&nbsp;&nbsp;<img alt="Text created or updated" title="Text created or updated" src="./bitmask+dp 2- Codeforces_files/x-update-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/stould" title="Expert stould" class="rated-user user-blue">stould</a>        →
+        <a href="http://codeforces.com/blog/entry/46733">working with polyominoes</a>
+&nbsp;&nbsp;<img alt="Text created or updated" title="Text created or updated" src="./bitmask+dp 2- Codeforces_files/x-update-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/pulgares" title="Candidate Master pulgares" class="rated-user user-violet">pulgares</a>        →
+        <a href="http://codeforces.com/blog/entry/46703">Warming up your mind before competing or training</a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+                        <li><div style="font-size:0.9em;padding:0.5em 0;">
+<a href="http://codeforces.com/profile/whyNotRedWlaNaMsh2dLm2am" title="Pupil whyNotRedWlaNaMsh2dLm2am" class="rated-user user-green">whyNotRedWlaNaMsh2dLm2am</a>        →
+        <a href="http://codeforces.com/blog/entry/46730">What is the point of problems paradigm that can be solved easily by googling  ? </a>
+&nbsp;&nbsp;<img alt="New comment(s)" title="New comment(s)" src="./bitmask+dp 2- Codeforces_files/comment-12x12.png" style="vertical-align:middle;">
+</div>
+</li>
+            </ul>
+        </div>
+            <div class="bottom-links">
+                <table style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td style="text-align:left;">
+                            </td>
+                            <td style="text-align:right;">
+                                    <a href="http://codeforces.com/recent-actions">Detailed →</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+                        <div id="pageContent" class="content-with-sidebar">
+                    <div class="second-level-menu">
+<ul class="second-level-menu-list"><li class="backLava" style="position: absolute; display: block; margin: 0px; padding: 0px; left: 49.5375px; top: 0px; width: 38px; height: 20px;"><div class="leftLava"></div><div class="bottomLava"></div><div class="cornerLava"></div></li>
+        <li><a href="http://codeforces.com/profile/Ripatti">Ripatti</a></li>
+        <li class="current selectedLava"><a href="http://codeforces.com/blog/Ripatti">Blog</a></li>
+        <li><a href="http://codeforces.com/teams/with/Ripatti">Teams</a></li>
+        <li><a href="http://codeforces.com/submissions/Ripatti">Submissions</a></li>
+        <li><a href="http://codeforces.com/groups/with/Ripatti">Groups</a></li>
+        <li><a href="http://codeforces.com/contests/with/Ripatti">Contests</a></li>
+        <li><a href="http://codeforces.com/contests/writer/Ripatti">Problemsetting</a></li>
+</ul>
+</div>
+    <div style="margin-top:0;">
+    <div>
+        <h3><a href="http://codeforces.com/blog/Ripatti" style="text-decoration:none;color:black !important;">Ripatti's blog</a></h3>
+    </div>
+        <div style="margin-top:2em;">
+
+
+<div class="topic" topicid="337">
+    <div class="title">
+            <a href="http://codeforces.com/blog/entry/337">            A little bit of classics: dynamic programming over subsets and paths in graphs
+</a>
+    </div>
+
+    <div class="info" style="position:relative;">
+            By&nbsp;<a href="http://codeforces.com/profile/Ripatti" title="Master Ripatti" class="rated-user user-orange">Ripatti</a>,
+            <span class="format-humantime" title="Apr/28/2010 13:21 UTC+5.5">6 years ago</span>,
+            translation,
+            <img style="position: relative;top: 5px;" src="./bitmask+dp 2- Codeforces_files/gb.png" alt="In English" title="In English">,
+
+<a class="attach-blogEntry-337-to-contest-link" href="http://codeforces.com/blog/entry/337#"><img src="./bitmask+dp 2- Codeforces_files/paperclip-16x16.png" title="Attach this blog to some contest as a resource"></a>
+
+<style type="text/css">
+    .attach-blogEntry-337-to-contest-form tr:not(:last-of-type) td {
+        padding-bottom: 1em;
+    }
+
+    .blogEntry-337-error {
+        font-size: 1.1rem;
+    }
+</style>
+
+<div class="attach-blogEntry-337-to-contest-form-holder" style="display: none;padding: 1em;margin: 1em;">
+    <form class="attach-blogEntry-337-to-contest-form" method="post"><input type="hidden" name="csrf_token" value="b77e1b6a0ee74745c176b4f82a35ae62">
+        <table style="width: 100%;">
+            <thead>
+            </thead>
+            <tbody>
+        <tr class="subscription-row blogEntry-337-blogId-error blogEntry-337-error" style="display: none;">
+            <td>&nbsp;</td>
+        <td colspan="2"><div class="shiftUp">        <span class="error for__blogEntry-337-blogId">-</span>
+</div></td>
+        </tr>
+            <tr>
+                <td style="width: 30%;"><label for="blogEntry-337-contestId">Contest:</label></td>
+                <td>
+                    <select id="blogEntry-337-contestId" name="contestId" style="width: 100%;float: left;" disabled="">
+                        <option value=""></option>
+                    </select>
+                </td>
+                <td>
+                    <img id="blogEntry-337-contestId-loading-indicator" src="./bitmask+dp 2- Codeforces_files/indicator.gif">
+                </td>
+            </tr>
+        <tr class="subscription-row blogEntry-337-contestId-error blogEntry-337-error" style="display: none;">
+            <td>&nbsp;</td>
+        <td colspan="2"><div class="shiftUp">        <span class="error for__blogEntry-337-contestId">-</span>
+</div></td>
+        </tr>
+            <tr>
+                <td style="width: 30%;"><label for="blogEntry-337-resourceType">Type:</label></td>
+                <td>
+                    <select id="blogEntry-337-resourceType" name="resourceType" style="width: 100%;">
+                        <option value="" selected=""></option>
+                        <option value="STATEMENT">statements</option>
+                        <option value="TUTORIAL">tutorial</option>
+                        <option value="ANNOUNCEMENT">announcement</option>
+                        <option value="DISCUSSION">discussion</option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+        <tr class="subscription-row blogEntry-337-resourceType-error blogEntry-337-error" style="display: none;">
+            <td>&nbsp;</td>
+        <td colspan="2"><div class="shiftUp">        <span class="error for__blogEntry-337-resourceType">-</span>
+</div></td>
+        </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" id="blogEntry-337-resource-submit" value="Attach" disabled="" style="padding: 0.25em 0.5em;margin: 1em;width: 8em;">
+                </td>
+                <td>
+                    <img id="blogEntry-337-resource-submitting-indicator" src="./bitmask+dp 2- Codeforces_files/indicator.gif" style="display: none;">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    <input type="hidden" name="_tta" value="689"></form>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".blogEntry-337-error").hide();
+
+        $(".attach-blogEntry-337-to-contest-link").click(function () {
+            Codeforces.facebox(".attach-blogEntry-337-to-contest-form-holder", "http://st.codeforces.com/s/61735");
+
+            $("#facebox .attach-blogEntry-337-to-contest-form").submit(function () {
+                if ($(this).find(":disabled").length === 0) {
+                    $("#facebox .blogEntry-337-error").hide();
+                    $("#facebox #blogEntry-337-resource-submitting-indicator").show();
+                    $("#facebox #blogEntry-337-resource-submit").attr("disabled", "disabled");
+
+                    //noinspection JSUnusedGlobalSymbols
+                    $.post("/data/blogAndContest?action=attachBlogToContest", {
+                        blogId:"440", contestId:$("#facebox #blogEntry-337-contestId").val(),
+                        blogEntryId:"337",
+                        resourceType:$("#facebox #blogEntry-337-resourceType").val()
+                    }, function (json) {
+                        var validated = true;
+
+                        for (var key in json) {
+                            if (json.hasOwnProperty(key) && key.indexOf("error__") === 0) {
+                                validated = false;
+                                $("#facebox .blogEntry-337-" + key.substring("error__".length) + "-error").show();
+                                $("#facebox .for__blogEntry-337-" + key.substring("error__".length)).text(json[key]);
+                            }
+                        }
+
+                        $("#facebox #blogEntry-337-resource-submitting-indicator").hide();
+                        $("#facebox #blogEntry-337-resource-submit").removeAttr("disabled");
+
+                        if (validated) {
+                            $.facebox.close();
+                            if (json["success"] === "true") {
+                                Codeforces.showMessage("Blog has been successfully attached to selected contest");
+                            } else {
+                                Codeforces.showMessage("There is unexpected error while attaching blog to the contest");
+                            }
+                        }
+                    }, "json");
+                }
+
+                return false;
+            });
+
+            var contestSelect = $("#blogEntry-337-contestId");
+            var popupContestSelect = $("#facebox #blogEntry-337-contestId");
+
+            if (popupContestSelect.is(":disabled")) {
+                $.post("/data/contests?action=getContestListWithEditableResources", function (data) {
+                    if (data["result"] === "success") {
+                        var contests = data["contests"];
+
+                        for (var i = 0, contestCount = contests.length; i < contestCount; ++i) {
+                            //noinspection StringLiteralBreaksHTMLJS
+                            var contestOptionHtml = "<option value=\"" + contests[i]["id"] + "\">"
+                                    + contests[i]["id"] + " - " + contests[i]["name"] + "</option>";
+                            contestSelect.append(contestOptionHtml);
+                            popupContestSelect.append(contestOptionHtml);
+                        }
+
+                        contestSelect.removeAttr("disabled");
+                        $("#blogEntry-337-contestId-loading-indicator").hide();
+                        $("#blogEntry-337-resource-submit").removeAttr("disabled");
+
+                        popupContestSelect.removeAttr("disabled");
+                        $("#facebox #blogEntry-337-contestId-loading-indicator").hide();
+                        $("#facebox #blogEntry-337-resource-submit").removeAttr("disabled");
+                    } else {
+                        alert("Can't receive contest list");
+                    }
+                }, "json");
+            }
+
+            return false;
+        });
+    });
+</script>
+
+
+
+        <span style="position:absolute;right:0;top:0.05em;margin-right:1em;display:inline;font-size:0.75em;">
+            <div style="margin-top:0.25em;">
+            </div>
+        </span>
+    </div>
+
+    <div class="content">
+        <div class="ttypography"><i>Author thanks </i><a class="rated-user" href="http://codeforces.com/profile/adamax" title="Капитан adamax">adamax</a><i> <span><span style="" title="">for  translation this article into English.</span></span></i><br><br><b>Introduction</b><br>After <a href="http://codeforces.ru/blog/entry/331">Codeforces Beta Round #11</a> several participants expressed a wish to read something about problems similar to <a href="http://codeforces.ru/contest/11/problem/D">problem D</a> of that round. The author of this article, for the purpose of helping them, tried searching for such information, but to his surprise couldn't find anything on the Internet. It is not known whether the search was not thorough or there's really nothing out there, but (just in case) the author decided to write his own article on this topic.<br><br>In some sense this article may be regarded as a tutorial for the <a href="http://codeforces.ru/contest/11/problem/D">problem D</a> from Beta Round #11.<br><br> <br><br>In this article quite well-known algorithms are considered: the search for optimal Hamiltonian walks and cycles, finding their number, check for existence and something more. The so-called "dynamic programming over subsets" is used. This method requires exponential time and memory and therefore can be used only if the graph is very small - typically 20 vertices or less.<br><br><b>DP over subsets</b><br>Consider a set of elements numbered from 0 to <span class="tex-span"><i>N</i> - 1</span>. Each subset of this set can be encoded by a sequence of <span class="tex-span"><i>N</i></span> bits (we will call this sequence "a mask"). The <span class="tex-span"><i>i</i></span>-th element belongs to the subset if and only if the <span class="tex-span"><i>i</i></span>-th bit of the mask equals 1. For instance, the mask <span class="tex-span">00010011</span> means that the subset of the set <span class="tex-span">[0... 7]</span> consists of elements 0, 1 and 4. There are totally <span class="tex-span">2<sup class="upper-index"><i>N</i></sup></span> masks, and so <span class="tex-span">2<sup class="upper-index"><i>N</i></sup></span> subsets. Each mask is in fact an integer number written in binary notation.<br><br>The method is to assign a value to each mask (and, therefore, to each subset) and compute the values for new masks using already computed values. As a rule, to find the value for a subset <span class="tex-span"><i>A</i></span> we remove an element in every possible way and use values for obtained subsets <span class="tex-span"><i>A</i>'<sub class="lower-index">1</sub>, <i>A</i>'<sub class="lower-index">2</sub>, ... , <i>A</i>'<sub class="lower-index"><i>k</i></sub></span> to compute the value for <span class="tex-span"><i>A</i></span>. This means that the values for <span class="tex-span"><i>A</i><sub class="lower-index"><i>i</i></sub>'</span> must have been computed already, so we need to establish an ordering in which masks will be considered. It's easy to see that the natural ordering will do: go over masks in increasing order of corresponding numbers.<br><br>We will use the following notation:<br><span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>)</span> - the <span class="tex-span"><i>i</i></span>-th bit of <span class="tex-span"><i>mask</i></span><br><span class="tex-span"><i>count</i>(<i>mask</i>)</span> - the number of non-zero bits in <span class="tex-span"><i>mask</i></span><br><span class="tex-span"><i>first</i>(<i>mask</i>)</span> - the number of the lowest non-zero bit in <span class="tex-span"><i>mask</i></span><br><span class="tex-span">(<i>a</i>?<i>b</i>: <i>c</i>)</span> - returns <span class="tex-span"><i>b</i></span> if <span class="tex-span"><i>a</i></span> holds, or <span class="tex-span"><i>c</i></span> otherwise.<br>The elements of our set will be vertices of the graph. For the sake of simplicity we'll assume that the graph is undirected. Modification of the algorithms for directed graphs is left as an exercise for the reader.<br><br><b>1. Search for the shortest Hamiltonian walk</b><br>Let the graph <span class="tex-span"><i>G</i> = (<i>V</i>, <i>E</i>)</span> have <span class="tex-span"><i>n</i></span> vertices, and each edge <img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/9b6de38d1b0c16b487db5585a3812af8e991860e.png" style="max-width: 100.0%;max-height: 100.0%;"> have a weight <span class="tex-span"><i>d</i>(<i>i</i>, <i>j</i>)</span>. We want to find a Hamiltonian walk for which the sum of weights of its edges is minimal.<br><br>Let <span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>]</span> be the length of the shortest Hamiltonian walk in the subgraph generated by vertices in <span class="tex-span"><i>mask</i></span>, that ends in the vertex <span class="tex-span"><i>i</i></span>.<br><br>The DP can be calculated by the following formulas:<br><span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>] = 0</span>, if <span class="tex-span"><i>count</i>(<i>mask</i>) = 1</span> and <span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>) = 1</span>;<br><img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/3426930acf69966a0cb4a7bd1597f0bb1277cfdf.png" style="max-width: 100.0%;max-height: 100.0%;">, if <span class="tex-span"><i>count</i>(<i>mask</i>) &gt; 1</span> and <span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>) = 1</span>;<br><span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>] = ∞</span> in other cases.<br><br>Now the desired minimal length is <img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/be18208d8321f93b3ff1e7c11018f9e3df9b3c67.png" style="max-width: 100.0%;max-height: 100.0%;">. If <span class="tex-span"><i>p</i><sub class="lower-index"><i>min</i></sub> = ∞</span>, then there is no Hamiltonian walk in the graph. Otherwise it's easy to recover the walk itself. Let the minimal walk end in the vertex <span class="tex-span"><i>i</i></span>. Then the vertex <span class="tex-span"><i>j</i> ≠ <i>i</i></span>, for which <img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/9e2806b497b102b0fb77dbc7188cbb33944e0eb3.png" style="max-width: 100.0%;max-height: 100.0%;">, is the previous vertex in the path. Now remove <span class="tex-span"><i>i</i></span> from the set and find the vertex previous to <span class="tex-span"><i>j</i></span> in the same way. Continuing this process until only one vertex is left, we'll find the whole Hamiltonian walk.<br><br>This solution requires <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i>)</span> of memory and <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i><sup class="upper-index">2</sup>)</span> of time.<br><br><b>2. Finding the number of Hamiltonian walks</b><br>Let the graph <span class="tex-span"><i>G</i> = (<i>V</i>, <i>E</i>)</span> be unweighted. We'll modify the previous algorithm. Let <span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>]</span> be the number of Hamiltonian walks on the subset <span class="tex-span"><i>mask</i></span>, which end in the vertex <span class="tex-span"><i>i</i></span>. The DP is rewritten in the following way:<br><span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>] = 1</span>, if <span class="tex-span"><i>count</i>(<i>mask</i>) = 1</span> and <span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>) = 1</span>;<br><img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/111ceb457d3800af6e186bfc56803eb573020b8e.png" style="max-width: 100.0%;max-height: 100.0%;">, if <span class="tex-span"><i>count</i>(<i>mask</i>) &gt; 1</span> and <span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>) = 1</span>;<br><span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>] = 0</span> in other cases.<br><br>The answer is <img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/3823ae756b1c49b12adee8fc39fbd1f92d39214f.png" style="max-width: 100.0%;max-height: 100.0%;">.<br><br>This solution requires <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i>)</span> of memory and <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i><sup class="upper-index">2</sup>)</span> of time.<br><br><b>3. Finding the number of simple paths</b><br>Calculate the DP from the previous paragraph. The answer is <img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/8a98229c0efdce4b3c8d09891c5f6cec3cd7c343.png" style="max-width: 100.0%;max-height: 100.0%;">. The coefficient <span class="tex-span">1 / 2</span> is required because each simple path is considered twice - in both directions. Also note that only paths of positive length are taken into account. You can add <span class="tex-span"><i>n</i></span> zero-length paths, of course.<br><br>This solution requires <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i>)</span> of memory and <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i><sup class="upper-index">2</sup>)</span> of time.<br><br><b>4. Check for existence of Hamiltonian walk</b><br>We can use solution 2 replacing the sum with bitwise OR. <span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>]</span> will contain a boolean value - whether there exists a Hamiltonian walk over the subset <span class="tex-span"><i>mask</i></span> which ends in the vertex <span class="tex-span"><i>i</i></span>. DP is the following:<br><span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>] = 1</span>, if <span class="tex-span"><i>count</i>(<i>mask</i>) = 1</span> and <span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>) = 1</span>;<br><img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/a1ad02ed3bbc7c7a47a69989f1801f563ef02ffb.png" style="max-width: 100.0%;max-height: 100.0%;">, if <span class="tex-span"><i>count</i>(<i>mask</i>) &gt; 1</span> and <span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>) = 1</span>;<br><span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>] = 0</span> in other cases.<br><br>This solution, like solution 2, requires <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i>)</span> of memory and <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i><sup class="upper-index">2</sup>)</span> of time. It can be improved in the following way.<br><br>Let <span class="tex-span"><i>dp</i>'[<i>mask</i>]</span> be the mask of the subset consisting of those vertices <span class="tex-span"><i>j</i></span> for which there exists a Hamiltonian walk over the subset <span class="tex-span"><i>mask</i></span> ending in <span class="tex-span"><i>j</i></span>. In other words, we 'compress' the previous DP: <span class="tex-span"><i>dp</i>'[<i>mask</i>]</span> equals <img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/093d34b7e9c55bf55cc670535f3eefab75eb497c.png" style="max-width: 100.0%;max-height: 100.0%;">. For the graph <span class="tex-span"><i>G</i></span> write out <span class="tex-span"><i>n</i></span> masks <span class="tex-span"><i>M</i><sub class="lower-index"><i>i</i></sub></span>, which give the subset of vertices incident to the vertex <span class="tex-span"><i>i</i></span>. That is, <img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/fabb6cb31765a407d9bfa403a752e334a936c67f.png" style="max-width: 100.0%;max-height: 100.0%;">.<br><br>DP will be rewritten in the following way:<br><span class="tex-span"><i>dp</i>'[<i>mask</i>] = 2<sup class="upper-index"><i>i</i></sup></span>, if <span class="tex-span"><i>count</i>(<i>mask</i>) = 1</span> and <span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>) = 1</span>;<br><img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/8a71895860a57cfc1e3eed2c8e547a1bb90f8044.png" style="max-width: 100.0%;max-height: 100.0%;">, if <span class="tex-span"><i>count</i>(<i>mask</i>) &gt; 1</span>;<br><span class="tex-span"><i>dp</i>'[<i>mask</i>] = 0</span> in other cases.<br><br>Pay special attention to the expression <img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/fbb0e28538d013709b2dc40cd33c26f6dae5f71e.png" style="max-width: 100.0%;max-height: 100.0%;">. The first part of the expression is the subset of vertices <span class="tex-span"><i>j</i></span>, for which there exists a Hamiltonian walk over the subset <span class="tex-span"><i>mask</i></span> minus vertex <span class="tex-span"><i>i</i></span>, ending in <span class="tex-span"><i>j</i></span>. The second part of the expression is the set of vertices incident to <span class="tex-span"><i>i</i></span>. If these subsets have non-empty intersection (their bitwise AND is non-zero), then it's easy to see that there exists a Hamiltonian walk in <span class="tex-span"><i>mask</i></span> ending in the vertex <span class="tex-span"><i>i</i></span>.<br><br>The final test is to compare <span class="tex-span"><i>dp</i>[2<sup class="upper-index"><i>n</i></sup> - 1]</span> to 0.<br><br>This solution uses <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup>)</span> of memory and <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i>)</span> of time.<br><br><b>5. Finding the shortest Hamiltonian cycle</b><br>Since we don't care at which vertex the cycle starts, assume that it starts at 0. Now use solution 1 for the subset of vertices, changing the formulas in the following way:<br><span class="tex-span"><i>dp</i>[1][0] = 0</span>;<br><img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/3426930acf69966a0cb4a7bd1597f0bb1277cfdf.png" style="max-width: 100.0%;max-height: 100.0%;">, if <span class="tex-span"><i>i</i> &gt; 0</span>, <span class="tex-span"><i>bit</i>(0, <i>mask</i>) = 1</span> and <span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>) = 1</span>;<br><span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>] = ∞</span> in other cases.<br><br>So <span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>]</span> contains the length of the shortest Hamiltonian walk over the subset <span class="tex-span"><i>mask</i></span>, starting at 0 and ending at <span class="tex-span"><i>i</i></span>.<br><br>The required minimum is calculated by the formula <img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/20e8be2659ed206676daedffa99d654cbf8750b3.png" style="max-width: 100.0%;max-height: 100.0%;">. If it equals <span class="tex-span">∞</span>, there is no Hamiltonian cycle. Otherwise the Hamiltonian cycle can be restored by a method similar to solution 1.<br><br><b>6. Finding the number of Hamiltonian cycles</b><br>Using ideas from solutions 5 and 2 one can derive a DP calculating the number of Hamiltonian cycles requiring <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i><sup class="upper-index">2</sup>)</span> of time and <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i>)</span> of memory.<br><br><b>7. Finding the number of simple cycles</b><br>Let <span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>]</span> be the number of Hamiltonian walks over the subset <span class="tex-span"><i>mask</i></span>, starting at the vertex <span class="tex-span"><i>first</i>(<i>mask</i>)</span> and ending at the vertex <span class="tex-span"><i>i</i></span>. DP looks like this:<br><span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>] = 1</span>, if <span class="tex-span"><i>count</i>(<i>mask</i>) = 1</span> and <span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>) = 1</span>;<br><img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/4bee02e9b2170bcec7148796498abe601e921f24.png" style="max-width: 100.0%;max-height: 100.0%;">, if <span class="tex-span"><i>count</i>(<i>mask</i>) &gt; 1</span>, <span class="tex-span"><i>bit</i>(<i>i</i>, <i>mask</i>) = 1</span> and <span class="tex-span"><i>i</i> ≠ <i>first</i>(<i>mask</i>)</span>;<br><span class="tex-span"><i>dp</i>[<i>mask</i>][<i>i</i>] = 0</span> otherwise.<br><br>The answer is <img align="middle" class="tex-formula" src="./bitmask+dp 2- Codeforces_files/ff80900b6cdcb90111af74aaa725fadb41cbc504.png" style="max-width: 100.0%;max-height: 100.0%;">.<br><br>This solution requres <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i><sup class="upper-index">2</sup>)</span> of time and <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i>)</span> of memory.<br><br><b>8. Checking for existence of Hamiltonian cycle</b><br>We can modify solution 5 and, using the trick from solution 4, obtain an algorithm requiring <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup><i>n</i>)</span> of time and <span class="tex-span"><i>O</i>(2<sup class="upper-index"><i>n</i></sup>)</span> of memory.<br><br><b>Exercises</b><br><a href="http://codeforces.ru/contest/11/problem/D">CFBR11D</a><br><a href="http://www.codechef.com/problems/TOOLS">CCTOOLS</a><br><br><b>P.S.</b> This article may be extended and fixed in future. The author would be grateful for supplementing the Exercises section and for pointing out any mistakes and inaccuracies.</div>
+    </div>
+
+
+        <div style="font-size: 1.1rem;line-height: 11px;">
+            <img style="vertical-align: middle;" src="./bitmask+dp 2- Codeforces_files/tags.png" title="Tags" alt="Tags">
+                <span style="padding: 0 0.35em;">
+    <a href="http://codeforces.com/search?query=algorithms" class="tag notice" style="text-decoration: none;">algorithms</a>,
+                </span>
+                <span style="padding: 0 0.35em;">
+    <a href="http://codeforces.com/search?query=dynamic%2520programming" class="tag notice" style="text-decoration: none;">dynamic programming</a>,
+                </span>
+                <span style="padding: 0 0.35em;">
+    <a href="http://codeforces.com/search?query=graphs" class="tag notice" style="text-decoration: none;">graphs</a>
+                </span>
+        </div>
+
+    <div class="roundbox meta" style="">
+            <div class="roundbox-lt">&nbsp;</div>
+            <div class="roundbox-rt">&nbsp;</div>
+            <div class="roundbox-lb">&nbsp;</div>
+            <div class="roundbox-rb">&nbsp;</div>
+        <div class="left-meta">
+            <ul>
+                    <li>        <a href="http://codeforces.com/blog/entry/337#" class="topic-vote-up-337"><img style="vertical-align:middle;position:relative;top:-0.2em;" src="./bitmask+dp 2- Codeforces_files/voteup.png" alt="Vote: I like it" title="Vote: I like it"></a>
+        &nbsp;
+
+
+        <a href="http://codeforces.com/blog/entry/337#" class="topic-vote-up-337">
+        
+        </a>
+</li>
+                    <li>
+
+        
+        <span title="Topic rating" style="font-size:larger;font-weight:bold;color:green">+22</span>
+        
+</li>
+                    <li>        <a href="http://codeforces.com/blog/entry/337#" class="topic-vote-down-337"><img style="vertical-align:middle;position:relative;top:-0.2em;" src="./bitmask+dp 2- Codeforces_files/votedown.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+        &nbsp;
+
+
+        <a href="http://codeforces.com/blog/entry/337#" class="topic-vote-down-337">
+        
+        </a>
+</li>
+            </ul>
+        </div>
+
+        <div class="yashare-auto-init" style="display: inline; position: relative; top: 5px; left: 0;" data-yasharel10n="en" data-yasharetype="none" data-yasharelink="http://codeforces.com/blog/entry/337" data-yasharetitle="Codeforces: A little bit of classics: dynamic programming over subsets and paths in graphs" data-yasharequickservices="vkontakte,facebook,twitter,lj"><span class="b-share"><a rel="nofollow" target="_blank" title="VKontakte" class="b-share__handle b-share__link b-share-btn__vkontakte" href="https://share.yandex.net/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fcodeforces.com%2Fblog%2Fentry%2F337&amp;title=Codeforces%3A%20A%20little%20bit%20of%20classics%3A%20dynamic%20programming%20over%20subsets%20and%20paths%20in%20graphs" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="https://share.yandex.net/go.xml?service=facebook&amp;url=http%3A%2F%2Fcodeforces.com%2Fblog%2Fentry%2F337&amp;title=Codeforces%3A%20A%20little%20bit%20of%20classics%3A%20dynamic%20programming%20over%20subsets%20and%20paths%20in%20graphs" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="https://share.yandex.net/go.xml?service=twitter&amp;url=http%3A%2F%2Fcodeforces.com%2Fblog%2Fentry%2F337&amp;title=Codeforces%3A%20A%20little%20bit%20of%20classics%3A%20dynamic%20programming%20over%20subsets%20and%20paths%20in%20graphs" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a><a rel="nofollow" target="_blank" title="LiveJournal" class="b-share__handle b-share__link b-share-btn__lj" href="https://share.yandex.net/go.xml?service=lj&amp;url=http%3A%2F%2Fcodeforces.com%2Fblog%2Fentry%2F337&amp;title=Codeforces%3A%20A%20little%20bit%20of%20classics%3A%20dynamic%20programming%20over%20subsets%20and%20paths%20in%20graphs" data-service="lj"><span class="b-share-icon b-share-icon_lj"></span></a></span></div>
+
+        <span style="position: relative; top: 7px; left: 0.8em;">
+        </span>
+
+        <div class="right-meta">
+            <ul>
+                    <li>        <a href="http://codeforces.com/profile/Ripatti"><img style="vertical-align:middle;position:relative;top:-0.2em;" src="./bitmask+dp 2- Codeforces_files/user_16x16.png" alt="Author" title="Author"></a>
+        &nbsp;
+
+
+        <a href="http://codeforces.com/profile/Ripatti">
+        Ripatti
+        </a>
+</li>
+                    <li>        <img style="vertical-align:middle;position:relative;top:-0.2em;" src="./bitmask+dp 2- Codeforces_files/date_16x16.png" alt="Publication date" title="Publication date">
+        &nbsp;
+
+
+        
+        <span class="format-humantime" title="Apr/28/2010 13:21 UTC+5.5">6 years ago</span>
+        
+</li>
+                    <li>        <a href="http://codeforces.com/blog/entry/337#comments"><img style="vertical-align:middle;position:relative;top:-0.2em;" src="./bitmask+dp 2- Codeforces_files/comments_16x16.png" alt="Comments" title="Comments"></a>
+        &nbsp;
+
+
+        <a href="http://codeforces.com/blog/entry/337#comments">
+        22
+        </a>
+</li>
+            </ul>
+        </div>
+
+        <br style="clear:both;">
+    </div>
+
+
+<div class="comments" commentableid="347">
+    <div class="title">
+        <img src="./bitmask+dp 2- Codeforces_files/comments-48x48.png" alt="Comments" title="Comments" style="position:relative;top:0.6em;">
+        <a name="comments">Comments (22)</a>
+    </div>
+    <div><a href="http://codeforces.com/blog/entry/337#" class="new-root-comment" style="float:right;position:relative;bottom:3.25em;">Write comment?</a></div>
+
+<div class="comment">
+    <table class="comment-table" commentid="4193" commentparentid="-1">
+        <tbody><tr>
+            <td class="left">
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/AlexErofeev">
+<img src="./bitmask+dp 2- Codeforces_files/e13829391cb9fc5e.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/AlexErofeev" title="Expert AlexErofeev" class="rated-user user-blue">AlexErofeev</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Apr/28/2010 17:51 UTC+5.5">6 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-4193" href="http://codeforces.com/blog/entry/337?#comment-4193" style="font-size:1.2em;">#</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="4193" data-commentrating="3" data-commentuserid="193">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:green;font-weight:bold;">+3</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-4193">
+                    <div class="moveup">
+                    <div class="ttypography">http://www.spoj.pl/problems/ASSIGN/<br><br>For example</div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-4193 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-4193 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-4193">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="4197" commentparentid="4193">
+        <tbody><tr>
+            <td class="left">
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/Ripatti">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/Ripatti" title="Master Ripatti" class="rated-user user-orange">Ripatti</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Apr/28/2010 18:29 UTC+5.5">6 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-4197" href="http://codeforces.com/blog/entry/337?#comment-4197" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-4193" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="4197" data-commentrating="0" data-commentuserid="472">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-4197">
+                    <div class="moveup">
+                    <div class="ttypography">спасибо, задача очень понравилась)) действительно, дп по подмножествам, только вот без графов и маршрутов в них. поэтому пока не знаю, стоит добавлять ее в статью или нет.<br><br>пусть пока повисит тут. потом, возможно, добавлю. возможно в новый раздел:)</div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-4197 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-4197 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-4197">
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+
+<div class="comment">
+    <table class="comment-table" commentid="4589" commentparentid="-1">
+        <tbody><tr>
+            <td class="left">
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/jaher">
+<img src="./bitmask+dp 2- Codeforces_files/687dca84b8940807.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/jaher" title="Expert jaher" class="rated-user user-blue">jaher</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="May/04/2010 00:47 UTC+5.5">6 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-4589" href="http://codeforces.com/blog/entry/337?#comment-4589" style="font-size:1.2em;">#</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="4589" data-commentrating="0" data-commentuserid="413">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-4589">
+                    <div class="moveup">
+                    <div class="ttypography">Nice tutorial. You could also add an explanation on how to count hamiltonian circuits on a grid of size n x m with (n &lt;= 7 and m &lt;= 10^9) for example which is also fairly classical.</div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-4589 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-4589 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-4589">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="4590" commentparentid="4589">
+        <tbody><tr>
+            <td class="left">
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/Ripatti">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/Ripatti" title="Master Ripatti" class="rated-user user-orange">Ripatti</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="May/04/2010 02:12 UTC+5.5">6 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-4590" href="http://codeforces.com/blog/entry/337?#comment-4590" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-4589" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="4590" data-commentrating="1" data-commentuserid="472">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:green;font-weight:bold;">+1</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-4590">
+                    <div class="moveup">
+                    <div class="ttypography">Counting hamiltonian circuits on a grid is&nbsp;<span><span style="" title="">quite</span></span><span><span style="" title="">  different from problems which was viewed there. In article I view </span></span>foremost <i>masks over subsets</i> and paths in <i>graphs</i>. But in your problem motzkin words and matrix multiplication are used:)<br><br>Maybe I will view your problem in fiture article:)</div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-4590 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-4590 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-4590">
+    </ul>
+</div>
+</li>
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="4607" commentparentid="4589">
+        <tbody><tr>
+            <td class="left">
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/gmark">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/gmark" title="Candidate Master gmark" class="rated-user user-violet">gmark</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="May/04/2010 13:40 UTC+5.5">6 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-4607" href="http://codeforces.com/blog/entry/337?#comment-4607" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-4589" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="4607" data-commentrating="0" data-commentuserid="665">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-4607">
+                    <div class="moveup">
+                    <div class="ttypography">CouDo you have a reference to such a problem?</div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-4607 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-4607 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-4607">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="4609" commentparentid="4607">
+        <tbody><tr>
+            <td class="left">
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/Ripatti">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/Ripatti" title="Master Ripatti" class="rated-user user-orange">Ripatti</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="May/04/2010 15:47 UTC+5.5">6 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-4609" href="http://codeforces.com/blog/entry/337?#comment-4609" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-4607" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="4609" data-commentrating="0" data-commentuserid="472">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-4609">
+                    <div class="moveup">
+                    <div class="ttypography">http://www.cs.ust.hk/mjg_lib/Library/Kwong_Ham_94.pdf<br>it is very old paper:)</div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-4609 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-4609 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-4609">
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+</li>
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="17005" commentparentid="4589">
+        <tbody><tr>
+            <td class="left">
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/giongto35">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/giongto35" title="Candidate Master giongto35" class="rated-user user-violet">giongto35</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Dec/24/2010 10:02 UTC+5.5">6 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-17005" href="http://codeforces.com/blog/entry/337?#comment-17005" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-4589" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="17005" data-commentrating="0" data-commentuserid="1772">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-17005">
+                    <div class="moveup">
+                    <div class="ttypography"><font face="verdana, arial, sans-serif"><span style="border-collapse: collapse;font-size: 14.0px;">If the size of grid is 12*12 . Can we use DP over Subsets</span></font></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-17005 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-17005 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-17005">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="17008" commentparentid="17005">
+        <tbody><tr>
+            <td class="left">
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/giongto35">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/giongto35" title="Candidate Master giongto35" class="rated-user user-violet">giongto35</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Dec/24/2010 12:48 UTC+5.5">6 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-17008" href="http://codeforces.com/blog/entry/337?#comment-17008" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-17005" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="17008" data-commentrating="0" data-commentuserid="1772">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-17008">
+                    <div class="moveup">
+                    <div class="ttypography">Top &nbsp;up</div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-17008 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-17008 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-17008">
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+
+<div class="comment">
+    <table class="comment-table" commentid="9891" commentparentid="-1">
+        <tbody><tr>
+            <td class="left">
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/havaliza">
+<img src="./bitmask+dp 2- Codeforces_files/f5a24cdc4359b26.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/havaliza" title="Master havaliza" class="rated-user user-orange">havaliza</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Aug/23/2010 16:30 UTC+5.5">6 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-9891" href="http://codeforces.com/blog/entry/337?#comment-9891" style="font-size:1.2em;">#</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="9891" data-commentrating="0" data-commentuserid="402">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-9891">
+                    <div class="moveup">
+                    <div class="ttypography"><a href="http://www.codechef.com/problems/TOOLS">http://www.codechef.com/problems/TOOLS</a><br>is an example problem for part 5.</div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-9891 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-9891 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-9891">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="9893" commentparentid="9891">
+        <tbody><tr>
+            <td class="left">
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/Ripatti">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/Ripatti" title="Master Ripatti" class="rated-user user-orange">Ripatti</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Aug/23/2010 20:10 UTC+5.5">6 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-9893" href="http://codeforces.com/blog/entry/337?#comment-9893" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-9891" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="9893" data-commentrating="0" data-commentuserid="472">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-9893">
+                    <div class="moveup">
+                    <div class="ttypography">Thanx! Very nice problem)) I added it.</div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-9893 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-9893 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-9893">
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+
+<div class="comment">
+    <table class="comment-table" commentid="172228" commentparentid="-1">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/__builtin__wolfy">
+<img src="./bitmask+dp 2- Codeforces_files/ab5428408451db7c.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/__builtin__wolfy" title="Newbie __builtin__wolfy" class="rated-user user-gray">__builtin__wolfy</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jun/02/2014 20:26 UTC+5.5">2 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-172228" href="http://codeforces.com/blog/entry/337?#comment-172228" style="font-size:1.2em;">#</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="172228" data-commentrating="0" data-commentuserid="208227">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-172228">
+                    <div class="moveup">
+                    <div class="ttypography"><p>Could you please further explain the recurrence in the first example (finding a shortest Hamiltonian walk)?</p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-172228 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-172228 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-172228">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="172242" commentparentid="172228">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/bufferedreader">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/bufferedreader" title="Pupil bufferedreader" class="rated-user user-green">bufferedreader</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jun/02/2014 22:39 UTC+5.5">2 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-172242" href="http://codeforces.com/blog/entry/337?#comment-172242" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-172228" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="172242" data-commentrating="0" data-commentuserid="118579">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-172242">
+                    <div class="moveup">
+                    <div class="ttypography"><p>For me too, please.</p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-172242 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-172242 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-172242">
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+
+<div class="comment">
+    <table class="comment-table" commentid="172234" commentparentid="-1">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/niklasb">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/niklasb" title="Candidate Master niklasb" class="rated-user user-violet">niklasb</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jun/02/2014 21:37 UTC+5.5">2 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-172234" href="http://codeforces.com/blog/entry/337?#comment-172234" style="font-size:1.2em;">#</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        <span style="" commentid="172234" revisioncount="3" revision="3">
+                            <a href="http://codeforces.com/blog/entry/337#" style="text-decoration:none;font-size:1.4rem;color:#bebebe;" class="leftRevision">←</a>
+                            Rev. <span class="revision">3</span>
+                            <a href="http://codeforces.com/blog/entry/337#" style="text-decoration:none;font-size:1.4rem;visibility:hidden;color:#bebebe;" class="rightRevision">→</a>
+                        </span>
+                        &nbsp;
+
+<span commentid="172234" data-commentrating="0" data-commentuserid="53089">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-172234">
+                    <div class="moveup">
+                    <div class="ttypography"><p>The following paper is potentially useful as reference:</p><p>"A Dynamic Programming Approach to Sequencing Problems" by Michael Held and Richard M. Karp, 1962. [<a href="http://dl.acm.org/citation.cfm?id=808532">citation</a>, <a href="http://ucilnica1213.fmf.uni-lj.si/pluginfile.php/11706/mod_resource/content/0/HELDKarpAlgoritemZaPTP_clanek.pdf">download</a>]</p><p>It contains lots of preliminary analysis and at least the DP approaches described in 1. and 5. of your post. I believe the algorithm is actually called "Held–Karp algorithm" in academic literature, but it was described independently by Bellman et al. in another paper.</p><p>A list of optimal algorithms for TSP with better runtime complexity can be found <a href="http://cstheory.stackexchange.com/questions/9241/approximation-algorithms-for-metric-tsp/11557#11557">here</a>.</p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-172234 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-172234 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-172234">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="304343" commentparentid="172234">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/Jima">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/Jima" title="Unrated, Jima" class="rated-user user-black">Jima</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jul/08/2016 16:30 UTC+5.5">7 weeks ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-304343" href="http://codeforces.com/blog/entry/337?#comment-304343" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-172234" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="304343" data-commentrating="0" data-commentuserid="404275">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-304343">
+                    <div class="moveup">
+                    <div class="ttypography"><p>can't open first link it requires e-mail for link sites.can u help me and give pdf file?</p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-304343 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-304343 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-304343">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="304344" commentparentid="304343">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/niklasb">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/niklasb" title="Candidate Master niklasb" class="rated-user user-violet">niklasb</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jul/08/2016 16:34 UTC+5.5">7 weeks ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-304344" href="http://codeforces.com/blog/entry/337?#comment-304344" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-304343" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="304344" data-commentrating="0" data-commentuserid="53089">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-304344">
+                    <div class="moveup">
+                    <div class="ttypography"><p>Took me two seconds to find another PDF source: <a href="http://people.cs.vt.edu/~gback/ICPCHandbook/book/copiesfromweb/held-karp-jsiam-1962.pdf">http://people.cs.vt.edu/~gback/ICPCHandbook/book/copiesfromweb/held-karp-jsiam-1962.pdf</a></p><p>you're welcome.</p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-304344 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-304344 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-304344">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="304345" commentparentid="304344">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/Jima">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/Jima" title="Unrated, Jima" class="rated-user user-black">Jima</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jul/08/2016 16:41 UTC+5.5">7 weeks ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-304345" href="http://codeforces.com/blog/entry/337?#comment-304345" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-304344" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="304345" data-commentrating="0" data-commentuserid="404275">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-304345">
+                    <div class="moveup">
+                    <div class="ttypography"><p>thanks,i am almost newbie on codeforces :d</p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-304345 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-304345 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-304345">
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+
+<div class="comment">
+    <table class="comment-table" commentid="181054" commentparentid="-1">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/saurabh060792">
+<img src="./bitmask+dp 2- Codeforces_files/b01c4f7a2826790d.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/saurabh060792" title="Expert saurabh060792" class="rated-user user-blue">saurabh060792</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Aug/04/2014 22:28 UTC+5.5">2 years ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-181054" href="http://codeforces.com/blog/entry/337?#comment-181054" style="font-size:1.2em;">#</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="181054" data-commentrating="0" data-commentuserid="101991">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-181054">
+                    <div class="moveup">
+                    <div class="ttypography"><p>In 4th section's second dp formulation second part, the condition stated is <strong>count(mask)&gt;1</strong> only. Isn't <strong>bit(mask, i) == 1</strong> condition should also be included? </p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-181054 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-181054 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-181054">
+    </ul>
+</div>
+
+<div class="comment">
+    <table class="comment-table" commentid="303708" commentparentid="-1">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/ank24ben">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/ank24ben" title="Unrated, ank24ben" class="rated-user user-black">ank24ben</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jul/04/2016 20:01 UTC+5.5">7 weeks ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-303708" href="http://codeforces.com/blog/entry/337?#comment-303708" style="font-size:1.2em;">#</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="303708" data-commentrating="0" data-commentuserid="399921">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-303708">
+                    <div class="moveup">
+                    <div class="ttypography"><p>can anybody give me link to its implemented code for any of the above part. Rest I got stuck at bit masking in implementation. Thanks in advance whoever will give link.</p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-303708 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-303708 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-303708">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="303726" commentparentid="303708">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/reality">
+<img src="./bitmask+dp 2- Codeforces_files/190d7b5f7b526d30.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/reality" title="Candidate Master reality" class="rated-user user-violet">reality</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jul/04/2016 21:32 UTC+5.5">7 weeks ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-303726" href="http://codeforces.com/blog/entry/337?#comment-303726" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-303708" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        <span style="" commentid="303726" revisioncount="2" revision="2">
+                            <a href="http://codeforces.com/blog/entry/337#" style="text-decoration:none;font-size:1.4rem;color:#bebebe;" class="leftRevision">←</a>
+                            Rev. <span class="revision">2</span>
+                            <a href="http://codeforces.com/blog/entry/337#" style="text-decoration:none;font-size:1.4rem;visibility:hidden;color:#bebebe;" class="rightRevision">→</a>
+                        </span>
+                        &nbsp;
+
+<span commentid="303726" data-commentrating="0" data-commentuserid="218500">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-303726">
+                    <div class="moveup">
+                    <div class="ttypography"><p><a href="http://ideone.com/LtzMBD">My solution for task D of CF beta round 11.</a></p><p>Btw,am i the only one who can't see the solution of others in this contest?i can't even open my solution.</p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-303726 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-303726 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-303726">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="303732" commentparentid="303726">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/TinyTiny">
+<img src="./bitmask+dp 2- Codeforces_files/no-avatar.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/TinyTiny" title="Expert TinyTiny" class="rated-user user-blue">TinyTiny</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jul/04/2016 22:27 UTC+5.5">7 weeks ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-303732" href="http://codeforces.com/blog/entry/337?#comment-303732" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-303726" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="303732" data-commentrating="0" data-commentuserid="403283">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-303732">
+                    <div class="moveup">
+                    <div class="ttypography"><p>me too, something is wrong today, I can't open submission code, including myself, now I can only open my "official" submissions.</p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-303732 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-303732 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-303732">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="303768" commentparentid="303732">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/poikniok">
+<img src="./bitmask+dp 2- Codeforces_files/a09c81a38619317a.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/poikniok" title="Candidate Master poikniok" class="rated-user user-violet">poikniok</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jul/05/2016 06:09 UTC+5.5">7 weeks ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-303768" href="http://codeforces.com/blog/entry/337?#comment-303768" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-303732" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="303768" data-commentrating="0" data-commentuserid="241314">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-303768">
+                    <div class="moveup">
+                    <div class="ttypography"><p>Yes also just encountered this problem. Why I try to open my own solution I get "You are not allowed to view the requested page" error. </p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-303768 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-303768 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-303768">
+            <li>
+<div class="comment">
+    <table class="comment-table" commentid="303769" commentparentid="303768">
+        <tbody><tr>
+            <td class="left">
+                <div style="position: absolute; left: 0;" class="comment-indent-holder">
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                        <div class="comment-no-indent">
+                            <span>»</span>
+                        </div>
+                </div>
+    <div class="avatar">
+        <a href="http://codeforces.com/profile/poikniok">
+<img src="./bitmask+dp 2- Codeforces_files/a09c81a38619317a.jpg">        </a>
+        <div><a href="http://codeforces.com/profile/poikniok" title="Candidate Master poikniok" class="rated-user user-violet">poikniok</a></div>
+    </div>
+            </td>
+            <td class="right">
+                <div class="info">
+                    
+                    <span class="item"><span class="format-humantime" title="Jul/05/2016 06:12 UTC+5.5">7 weeks ago</span>,</span>
+                    <span class="item"><a title="Link to comment" name="comment-303769" href="http://codeforces.com/blog/entry/337?#comment-303769" style="font-size:1.2em;">#</a></span>
+                        <span class="item"><a title="Parent comment" href="http://codeforces.com/blog/entry/337#comment-303768" style="font-size:1.2em;">^</a></span>
+                    <span class="item">|</span>
+                    <span style="position: relative; top: 2px;">
+</span>
+                    <div style="position:absolute;right:0;top:0;">
+                        &nbsp;
+
+<span commentid="303769" data-commentrating="0" data-commentuserid="241314">
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="1" dd="x"><img style="position:relative;top:3px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-voteup-blue.png" alt="Vote: I like it" title="Vote: I like it"></a>
+<span class="commentRating"><span style="color:gray;font-weight:bold;">0</span></span>
+<a href="http://codeforces.com/blog/entry/337#" class="vote-for-comment" votedirection="-1" dd="y"><img style="position:relative;top:2px;opacity:0.35;" src="./bitmask+dp 2- Codeforces_files/comment-votedown-blue.png" alt="Vote: I do not like it" title="Vote: I do not like it"></a>
+</span>                    </div>
+                </div>
+                <div class="comment-content comment-content-303769">
+                    <div class="moveup">
+                    <div class="ttypography"><p>I actually have theory now for why this is. I think problem D might have been used in the VK Cup Finals — Trial Contest, and so they blocked solutions so we could not see submission from people in that contest. </p></div>
+                    </div>
+                </div>
+                <div class="reply info">
+                    <a class="comment-303769 en false" href="http://codeforces.com/blog/entry/337#" style="text-decoration: none;"><span class="arrow">→</span></a>
+                    <a class="comment-303769 en false" href="http://codeforces.com/blog/entry/337#">Reply</a>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    <ul class="comment-children comment-303769">
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+</li>
+    </ul>
+</div>
+    <br>
+
+<div id="editBox-347" style="width:50em;display:none;">
+    <div class="previewBody" style="border: 1px solid #d4d4d4; margin-bottom: 0.5em; padding: 0.25em; display:none;">&nbsp;</div>
+    <textarea data-drafts-id="CommentReplyFrame" class="wysiwyg" name="editContent" rows="20" style="width:99%;"></textarea>
+    <div class="error error__content"></div>
+    <div style="text-align:center;">
+        <input type="button" name="preview" style="padding: 0.25em 1em; margin-top: 1em; min-width: 6.5em;" value="Preview">
+        <input type="button" name="save" style="padding: 0.25em 1em; margin-top: 1em; min-width: 6.5em;" value="Save">
+    </div>
+</div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+var firstPreview347 = true;
+var lastPreviewContent347 = '';
+
+if (!window.moveCommentRevision) {
+    moveCommentRevision = function(e, dir) {
+        var p = e.parent();
+        var revisionCount = parseInt(p.attr("revisionCount"));
+        var revision = parseInt(p.attr("revision"));
+        var next = revision + dir;
+        var commentId = p.attr("commentId");
+        if (next >= 1 && next <= revisionCount) {
+            $.post(
+                "/data/comment-data",
+                {action: "revision", commentId: commentId, revision: next},
+                function(json) {
+                    if (json.success == "true") {
+                        var parentDiv = e;
+
+                        while (parentDiv !== null && (parentDiv[0].nodeName.toLowerCase() !== "td" || !parentDiv.hasClass("right"))) {
+                            parentDiv = parentDiv.parent();
+                        }
+
+                        if (parentDiv === null) {
+                            return;
+                        }
+
+                        parentDiv.find("div.comment-content-" + commentId + " .moveup").html(json.content);
+                        Codeforces.setupSpoilers(parentDiv.find("div.comment-content-" + commentId + " .moveup"));
+                        p.attr("revision", next);
+                        p.find("span.revision").text(next);
+                        if (next == 1) {
+                            p.find("a.leftRevision").css("visibility", "hidden");
+                        } else {
+                            p.find("a.leftRevision").css("visibility", "visible");
+                        }
+                        if (next == revisionCount) {
+                            p.find("a.rightRevision").css("visibility", "hidden");
+                        } else {
+                            p.find("a.rightRevision").css("visibility", "visible");
+                        }
+
+                        window.updateTypography();
+                    } else {
+                        alert(e.error);
+                    }
+                },
+                "json"
+            );
+        }
+    };
+}
+
+$("div[commentableId=347] a.leftRevision").click(function () {
+    window.moveCommentRevision($(this), -1);
+    return false;
+});
+
+$("div[commentableId=347] a.rightRevision").click(function () {
+    window.moveCommentRevision($(this), +1);
+    return false;
+});
+
+
+
+        });
+    </script>
+
+
+        <script type="text/javascript">
+            $(function() {
+                window._ftaa = "nsdhwmospi9vlkaeq2";
+            })
+        </script>
+
+        <script type="text/javascript">
+            $(function() {
+                window._bfaa = "ebe4ebd20deade9b9c53405de8ef35c2";
+            });
+        </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+    $("a.new-root-comment").click(function () {
+            window.location = "/enter";
+        return false;
+    });
+
+    $(".comment-table .reply a").click(function () {
+            window.location = "/enter";
+        return false;
+    });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+    $(".vote-for-comment").mouseover(function () {
+        var vote = $(this);
+        var direction = vote.attr("voteDirection");
+        var commentUserId = $(this).parent().attr("data-commentUserId");
+        var ownComment = false;
+        if (direction == 1 && !ownComment) {
+            vote.find("img").attr("src", "http://st.codeforces.com/s/61735/images/actions/comment-voteup.png");
+            vote.find("img").attr("popacity", vote.find("img").css("opacity"));
+            vote.find("img").css("opacity", "1.0");
+        }
+        if (direction == -1 && !ownComment) {
+            vote.find("img").attr("src", "http://st.codeforces.com/s/61735/images/actions/comment-votedown.png");
+            vote.find("img").attr("popacity", vote.find("img").css("opacity"));
+            vote.find("img").css("opacity", "1.0");
+        }
+    });
+
+    $(".vote-for-comment").mouseout(function () {
+        var vote = $(this);
+        var direction = vote.attr("voteDirection");
+        var commentUserId = $(this).parent().attr("data-commentUserId");
+        var ownComment = false;
+        if (direction == 1 && !ownComment) {
+            vote.find("img").attr("src", "http://st.codeforces.com/s/61735/images/actions/comment-voteup-blue.png");
+            vote.find("img").css("opacity", vote.find("img").attr("popacity"));
+        }
+        if (direction == -1 && !ownComment) {
+            vote.find("img").attr("src", "http://st.codeforces.com/s/61735/images/actions/comment-votedown-blue.png");
+            vote.find("img").css("opacity", vote.find("img").attr("popacity"));
+        }
+    });
+
+    $(".vote-for-comment").click(function () {
+        var vote = $(this);
+        var commentId = $(this).parent().attr("commentid");
+        var commentRating = $(this).parent().attr("data-commentRating");
+        var direction = $(this).attr("voteDirection");
+        var commentUserId = $(this).parent().attr("data-commentUserId");
+        var ownComment = false;
+        $.post("/data/comment/vote", {commentId: commentId, _tta: Codeforces.tta(), vote: direction, commentRating: commentRating}, function(data) {
+            if (direction != 0 && !ownComment && data["success"] == "true") {
+                vote.parent().find(".vote-for-comment").attr("voteDirection", 0);
+                if (direction == 1)
+                    vote.find("img").attr("src", "http://st.codeforces.com/s/61735/images/actions/comment-voteup.png");
+                else
+                    vote.find("img").attr("src", "http://st.codeforces.com/s/61735/images/actions/comment-votedown.png");
+                vote.find("img").attr("popacity", "1.0");
+                vote.find("img").css("opacity", "1.0");
+                vote.parent().find(".commentRating").html(data["commentRating"]);
+            }
+            Codeforces.showMessage(data["message"]);
+        }, "json");
+        return false;
+    });
+
+    $(".negative-comment-vote").closest(".comment-table").addClass("comment-bad");
+
+    $(".troll-comment-vote").closest(".comment").css("display", "none");
+
+    $(".too-negative-comment-vote").closest(".comment-table").each(function () {
+        var e = $(this);
+        e.addClass("comment-too-bad");
+        var commentId = e.attr("commentId");
+        $("<div class='bad-comment-replacement ttypography'>The comment is hidden because of too negative feedback, click <a href=# class=show-bad-comment-link>here</a> to view it</div>").appendTo(
+            e.find(".right")
+        );
+        e.find(".comment-content").hide();
+        e.find(".show-bad-comment-link").click(function () {
+            e.find(".comment-content").show();
+            e.find(".bad-comment-replacement").hide();
+            return false;
+        });
+    });
+        });
+    </script>
+</div>
+
+<style type="text/css">
+    .new-comments-box {
+        padding: 0.5em;
+        width: 22px;
+        font-size: 1.3rem;
+        font-weight: bold !important;
+
+        position: fixed;
+        top: 40%;
+        right: 0;
+        opacity: 0.2;
+        color: white;
+        text-align: center;
+
+        border: 1px solid #222;
+        background-color: #888 !important;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+    }
+
+    .new-comments-box:hover {
+        opacity: 1;
+    }
+
+    .new-comments-box .dir:hover {
+        background: #3B5998 !important;
+        cursor: pointer;
+    }
+</style>
+
+<div class="new-comments-box" data-position="outside" data-index="-1" style="display: none;">
+    <div class="up dir" title="Ctrl+Up">↑<hr></div>
+    <div class="info" title="New comments"></div>
+    <div class="down dir" title="Ctrl+Down"><hr>↓</div>
+</div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+    function gotoComment(direction) {
+        var box = $(".new-comments-box");
+        var index = parseInt(box.attr("data-index"));
+        if (index == -1)
+            index = 0;
+        else
+            index = Math.max(0, Math.min(parseInt(box.find(".info").text()) - 1, index + direction));
+        box.attr("data-index", index);
+        var comment = $($(".comment .highlight-blue[commentId]").get(index));
+        $('html, body').animate({
+          'scrollTop': Math.max(0, comment.offset().top - ($(window).height() - comment.height()) / 2)
+        });
+        return false;
+    }
+
+    $(".new-comments-box .down").click(function () {
+        return gotoComment(1);
+    });
+
+    $(".new-comments-box .up").click(function () {
+        return gotoComment(-1);
+    });
+
+    $(document).keydown(function (e) {
+         var code = (e.keyCode ? e.keyCode : e.which);
+         if (e.ctrlKey) {
+            if (code == 38 || code == 40) {
+                gotoComment(code - 39);
+            }
+         }
+    });
+
+    var newCommentCount = $(".comment .highlight-blue[commentId]").length;
+    if (newCommentCount > 0) {
+        $(".new-comments-box .info").text(newCommentCount);
+        $(".new-comments-box").show();
+    }
+
+    $('table.comment-table').mouseenter(function () {
+        var comment = $(this);
+        var cnt = 0;
+        while (true) {
+            var id = comment.attr("commentId");
+            var parentId = comment.attr("commentParentId");
+            comment.find(".comment-indent-holder:first .comment-no-indent").addClass("comment-indent");
+            if (parentId == -1) {
+                break;
+            }
+            comment = $("table.comment-table[commentId=" + parentId + "]");
+        }
+        return false;
+    });
+
+    $('table.comment-table').mouseleave(function () {
+        var comment = $(this);
+        var cnt = 0;
+        while (true) {
+            var id = comment.attr("commentId");
+            var parentId = comment.attr("commentParentId");
+            comment.find(".comment-indent-holder:first .comment-no-indent").removeClass("comment-indent");
+            if (parentId == -1) {
+                break;
+            }
+            comment = $("table.comment-table[commentId=" + parentId + "]");
+        }
+        return false;
+    });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+    $(".topic-vote-up-337").click(function () {
+        $.post("/data/topic/vote", {topicId: 337, _tta: Codeforces.tta(), topicRevisionId: 2163, vote: +1}, function(data) {
+            Codeforces.showMessage(data);
+        }, "json");
+        return false;
+    });
+    $(".topic-vote-down-337").click(function () {
+        $.post("/data/topic/vote", {topicId: 337, _tta: Codeforces.tta(), topicRevisionId: 2163, vote: -1}, function(data) {
+            Codeforces.showMessage(data);
+        }, "json");
+        return false;
+    });
+        });
+    </script>
+</div>
+        </div>
+    </div>
+                </div>
+        </div>
+            <br style="clear: both;">
+            <div id="footer">
+                <div><a href="http://codeforces.com/">Codeforces</a> (c) Copyright 2010-2016 Mike Mirzayanov</div>
+                <div>The only programming contests Web 2.0 platform</div>
+                    <div>Server time: Aug/23/2016 19:36:46<sup title="timezone offset" style="font-size:8px;">UTC+5.5</sup> (c2).</div>
+                    Desktop version, switch to <a rel="nofollow" class="switchToMobile" href="http://codeforces.com/blog/entry/337?mobile=true">mobile version</a>.
+            </div>
+        <script type="text/javascript">
+            $(function() {
+                $(".switchToMobile").click(function() {
+                    Codeforces.redirect(Codeforces.updateUrlParameter(document.location.href, "mobile", "true"));
+                    return false;
+                });
+                $(".switchToDesktop").click(function() {
+                    Codeforces.redirect(Codeforces.updateUrlParameter(document.location.href, "mobile", "false"));
+                    return false;
+                });
+            });
+        </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($(window).width() < 1600) {
+                $('.button-up').css('width', '30px').css('line-height', '30px').css('font-size', '20px');
+            }
+
+            if ($(window).width() >= 1200) {
+                $ (window).scroll (function () {
+                    if ($ (this).scrollTop () > 100) {
+                        $ ('.button-up').fadeIn();
+                    } else {
+                        $ ('.button-up').fadeOut();
+                    }
+                });
+
+                $('.button-up').click(function () {
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 500);
+                    return false;
+                });
+
+                $('.button-up').hover(function () {
+                    $(this).animate({
+                        'opacity':'1'
+                    }).css({'background-color':'#e7ebf0','color':'#6a86a4'});
+                }, function () {
+                    $(this).animate({
+                        'opacity':'0.7'
+                    }).css({'background':'none','color':'#d3dbe4'});;
+                });
+            }
+            Codeforces.focusOnError();
+        });
+    </script>
+
+        <div class="userListsFacebox" style="display:none;">
+            <div style="padding: 0.5em; width: 600px; max-height: 200px; overflow-y: auto">
+<div class="datatable" style="background-color: #E1E1E1; padding-bottom: 3px;">
+            <div class="lt">&nbsp;</div>
+            <div class="rt">&nbsp;</div>
+            <div class="lb">&nbsp;</div>
+            <div class="rb">&nbsp;</div>
+
+            <div style="padding: 4px 0 0 6px;font-size:1.4rem;position:relative;">
+                User lists
+
+                <div style="position:absolute;right:0.25em;top:0.35em;">
+                    <span style="padding:0;position:relative;bottom:2px;" class="rowCount"></span>
+
+                    <img class="closed" src="./bitmask+dp 2- Codeforces_files/control.png">
+
+                    <span class="filter" style="display:none;">
+                        <img class="opened" src="./bitmask+dp 2- Codeforces_files/control-270.png">
+                        <input style="padding:0;position:relative;bottom:2px;border:1px solid #aaa;height:17px;font-size:1.3rem;">
+                    </span>
+                </div>
+            </div>
+            <div style="background-color: white;margin:0.3em 3px 0 3px;position:relative;">
+            <div class="ilt">&nbsp;</div>
+            <div class="irt">&nbsp;</div>
+            <table class="">
+                    <thead>
+                    <tr>
+                        <th class="top left right">Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="no-items visible"><td style="text-align:left;" colspan="32" class="bottom dark left right">No items</td></tr></tbody>
+            </table>
+            </div>
+        </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+                // Create new ':containsIgnoreCase' selector for search
+                jQuery.expr[':'].containsIgnoreCase = function(a, i, m) {
+                    return jQuery(a).text().toUpperCase()
+                            .indexOf(m[3].toUpperCase()) >= 0;
+                };
+
+                if (window.updateDatatableFilter == undefined) {
+                    window.updateDatatableFilter = function(i) {
+                        var parent = $(i).parent().parent().parent().parent();
+                        $("tr.no-items", parent).remove();
+                        $("tr", parent).hide().removeClass('visible');
+                        var text = $(i).val();
+                        if (text) {
+                            $("tr" + ":containsIgnoreCase('" + text + "')", parent).show().addClass('visible');
+                        } else {
+                            parent.find(".rowCount").text("");
+                            $("tr", parent).show().addClass('visible');
+                        }
+
+                        var found = false;
+                        var visibleRowCount = 0;
+                        $("tr", parent).each(function () {
+                            if (!found) {
+                                if ($(this).find("th").size() > 0) {
+                                    $(this).show().addClass('visible');
+                                    found = true;
+                                }
+                            }
+                            if ($(this).hasClass('visible')) {
+                                visibleRowCount++;
+                            }
+                        });
+                        if (text) {
+                            parent.find(".rowCount").text("Matches: " + (visibleRowCount - (found ? 1 : 0)));
+                        }
+                        if (visibleRowCount == (found ? 1 : 0)) {
+                            $("<tr class='no-items visible'><td style=\"text-align:left;\"colspan=\"32\">No items<\/td><\/tr>").appendTo($(parent).find('table'));
+                        }
+                        $(parent).find("tr td").removeClass("dark");
+                        $(parent).find("tr.visible:odd td").addClass("dark");
+                    }
+
+                    $(".datatable .closed").click(function () {
+                        var parent = $(this).parent();
+                        $(this).hide();
+                        $(".filter", parent).fadeIn(function () {
+                            $("input", parent).val("").focus().css("border", "1px solid #aaa");
+                        });
+                    });
+
+                    $(".datatable .opened").click(function () {
+                        var parent = $(this).parent().parent();
+                        $(".filter", parent).fadeOut(function () {
+                            $(".closed", parent).show();
+                            $("input", parent).val("").each(function () {
+                                window.updateDatatableFilter(this);
+                            });
+                        });
+                    });
+
+                    $(".datatable .filter input").keyup(function(e) {
+                        window.updateDatatableFilter(this);
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+
+                    $(".datatable table").each(function () {
+                        var found = false;
+                        $("tr", this).each(function () {
+                            if (!found && $(this).find("th").size() == 0) {
+                                found = true;
+                            }
+                        });
+                        if (!found) {
+                            $("<tr class='no-items visible'><td style=\"text-align:left;\"colspan=\"32\">No items<\/td><\/tr>").appendTo(this);
+                        }
+                    });
+
+                    // Applies styles to datatables.
+                    $(".datatable").each(function () {
+                        $(this).find("tr:first th").addClass("top");
+                        $(this).find("tr:last td").addClass("bottom");
+                        $(this).find("tr:odd td").addClass("dark");
+                        $(this).find("tr td:first-child, tr th:first-child").addClass("left");
+                        $(this).find("tr td:last-child, tr th:last-child").addClass("right");
+                    });
+
+                    $(".datatable table.tablesorter").each(function () {
+                        $(this).bind("sortEnd", function () {
+                            $(".datatable").each(function () {
+                                $(this).find("th, td")
+                                    .removeClass("top").removeClass("bottom")
+                                    .removeClass("left").removeClass("right")
+                                    .removeClass("dark");
+                                $(this).find("tr:first th").addClass("top");
+                                $(this).find("tr:last td").addClass("bottom");
+                                $(this).find("tr:odd td").addClass("dark");
+                                $(this).find("tr td:first-child, tr th:first-child").addClass("left");
+                                $(this).find("tr td:last-child, tr th:last-child").addClass("right");
+                            });
+                        });
+                    });
+                }
+        });
+    </script>
+            </div>
+        </div>
+        <script type="application/javascript">
+            $(function() {
+                $(".userListMarker").click(function() {
+                    $.post("/data/lists", {action: "findTouched"}, function(json) {
+                        Codeforces.facebox(".userListsFacebox");
+                        var tbody = $("#facebox tbody");
+                        tbody.empty();
+                        for (var i in json) {
+                            tbody.append(
+                                    $("<tr></tr>").append(
+                                            $("<td></td>").attr("data-readKey", json[i].readKey).text(json[i].name)
+                                    )
+                            );
+                        }
+                        Codeforces.updateDatatables();
+                        tbody.find("td").css("cursor", "pointer").click(function() {
+                            document.location = Codeforces.updateUrlParameter(document.location.href, "list", $(this).attr("data-readKey"));
+                        });
+                    }, "json");
+                });
+            });
+        </script>
+
+
+</div><div id="datepick-div" style="display: none;"></div><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="display: none; padding-bottom: 42px; padding-right: 42px;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div></body></html>
